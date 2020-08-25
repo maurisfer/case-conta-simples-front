@@ -1,0 +1,17 @@
+.canvas-container {
+  height: 200px;
+  box-shadow: 0px 1px 2px #999;
+}
+
+
+
+@media (min-width:600px){
+
+  .canvas-container{
+    position: relative;
+    width: 40%;
+    margin-top: 20px;
+    margin-left: 235px;
+
+  }
+}
