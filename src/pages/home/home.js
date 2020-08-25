@@ -5,8 +5,6 @@ import {Headerdiv} from "../../assets/styles/headerdiv"
 import {GreenButton} from "../../assets/styles/greenbutton"
 import Imglogo from "../../assets/images/logo 01 mobile.svg"
 import Sino from "../../assets/images/iconesino.svg"
-import Iconemenu from "../../assets/images/barramenu.svg"
-import Exitmenu from "../../assets/images/exitmenu.svg"
 import Logobranco from "../../assets/images/logobranco.svg"
 import Olhoapagado from "../../assets/images/olhoapagado.svg"
 import Olhoaceso from "../../assets/images/olhoaceso.svg"
@@ -43,102 +41,85 @@ const Saldo = props => {
 }
 
 
-
-// const Menucontent = props => {
-//   const [checked, setChecked] = useState(false);
-//   const stylenav = checked? "mostrarmenu" : "mostrarmenu escondermenu"
-//   const iconmenu = checked? Exitmenu : Iconemenu
-//   return (
-//     <div id="menucontent">
-//       <button onClick={() => setChecked(!checked)}>
-//         <img src={iconmenu} alt="clique para abrir o menu" id="botaomenu" />
-//       </button>
-//       <img src={Imglogo} alt="logo da empresa"/>
-//       <button>
-//         <img src={Sino} alt = "ativar notificações"/>
-//       </button>
-//       <div className={stylenav} id="navigation">
-//         <ul>
-//           <li><a href="/"><img  src={Iconeinicio} alt="inicio"/> Início</a></li>
-//           <li><a href="/"><img  src={IconeDepositar} alt="inicio"/>Depositar</a></li>
-//           <li><a href="/"><img  src={Iconeextratodaconta} alt="inicio"/>Extrato da Conta</a></li>
-//           <li><a href="/"><img  src={IconeCartoes} alt="inicio"/>Cartões</a></li>
-//           <li><a href="/"><img  src={Iconeemitircobranca} alt="inicio"/>Emitir Cobrança</a></li>
-//           <li><a href="/"><img  src={IconeGestaodecobranca} alt="inicio"/>Gestão de Cobrança</a></li>
-//           <li><a href="/"><img  src={Iconetransferencia} alt="inicio"/>Transferência</a></li>
-//           <li><a href="/"><img  src={Iconepagamentos} alt="inicio"/>Pagamentos</a></li>
-//           <li><a href="/"><img  src={Iconeusuarios} alt="inicio"/>Usuários</a></li>
-//           <li><a href="/"><img  src={IconeAgendamentos} alt="inicio"/>Agendamentos</a></li>
-//           <li><a href="/"><img  src={IconesComprovantes} alt="inicio"/>Comprovantes</a></li>
-//           <li><a href="/"><img  src={IconeTarifas} alt="inicio"/>Tarifas</a></li>
-//           <li><a href="/"><img  src={IconeFaleConosco} alt="inicio"/>Fale Conosco</a></li>
-//           <li><a href="/"><img  src={IconeBeneficios} alt="inicio"/>Beneficios</a></li>
-//         </ul>
-//       </div>
-//     </div>
-//   )
-// }
-
-
 function Home(){
   return (
   <div className="Home">
     <>
       <GlobalStyle/>
       <Container>
-      <Headerdiv>
+        <Headerdiv>
 
-      <nav role="navigation">
-          <div id="navinfos">
-            <img src={Imglogo} alt="logo da empresa"/>
-            <button>
-              <img src={Sino} alt = "ativar notificações"/>
-            </button>
-          </div>
-
-          <div id="menuToggle">
-            <input type="checkbox" />
-              <span></span>
-              <span></span>
-              <span></span>
-
-            <ul id="menu">
-              <li><a href="/"><img  src={Iconeinicio} alt="inicio"/> Início</a></li>
-              <li><a href="/"><img  src={IconeDepositar} alt="inicio"/>Depositar</a></li>
-              <li><a href="/"><img  src={Iconeextratodaconta} alt="inicio"/>Extrato da Conta</a></li>
-              <li><a href="/"><img  src={IconeCartoes} alt="inicio"/>Cartões</a></li>
-              <li><a href="/"><img  src={Iconeemitircobranca} alt="inicio"/>Emitir Cobrança</a></li>
-              <li><a href="/"><img  src={IconeGestaodecobranca} alt="inicio"/>Gestão de Cobrança</a></li>
-              <li><a href="/"><img  src={Iconetransferencia} alt="inicio"/>Transferência</a></li>
-              <li><a href="/"><img  src={Iconepagamentos} alt="inicio"/>Pagamentos</a></li>
-              <li><a href="/"><img  src={Iconeusuarios} alt="inicio"/>Usuários</a></li>
-              <li><a href="/"><img  src={IconeAgendamentos} alt="inicio"/>Agendamentos</a></li>
-              <li><a href="/"><img  src={IconesComprovantes} alt="inicio"/>Comprovantes</a></li>
-              <li><a href="/"><img  src={IconeTarifas} alt="inicio"/>Tarifas</a></li>
-              <li><a href="/"><img  src={IconeFaleConosco} alt="inicio"/>Fale Conosco</a></li>
-              <li><a href="/"><img  src={IconeBeneficios} alt="inicio"/>Beneficios</a></li>
-            </ul>
-           </div>
-          </nav>
-
-        <div id="wellcomediv">
-
-          <section id="sectioninfos">
-            <div id="logoenome">
-              <h3><img src={Logobranco} id="logobranco" />Bem-vindo à conta <strong>Fernando</strong></h3>
+          <nav role="navigation">
+            <div id="navinfos">
+              <img src={Imglogo} alt="logo da empresa"/>
+              <button>
+                <img src={Sino} alt = "ativar notificações"/>
+              </button>
             </div>
-            <h5>Sessão ativa há 00:00</h5>
-            <Saldo />
-          </section>
 
-          <div className="buttondiv">
-            <GreenButton><a href="/">Depositar</a></GreenButton>
-            <GreenButton><a href="/">Trasferir</a></GreenButton>
+            <div id="menuToggle">
+              <input type="checkbox" />
+                <span></span>
+                <span></span>
+                <span></span>
+
+              <ul id="menu">
+                <li><a href="/"><img  src={Iconeinicio} alt="inicio"/> Início</a></li>
+                <li><a href="/"><img  src={IconeDepositar} alt="inicio"/>Depositar</a></li>
+                <li><a href="/"><img  src={Iconeextratodaconta} alt="inicio"/>Extrato da Conta</a></li>
+                <li><a href="/"><img  src={IconeCartoes} alt="inicio"/>Cartões</a></li>
+                <li><a href="/"><img  src={Iconeemitircobranca} alt="inicio"/>Emitir Cobrança</a></li>
+                <li><a href="/"><img  src={IconeGestaodecobranca} alt="inicio"/>Gestão de Cobrança</a></li>
+                <li><a href="/"><img  src={Iconetransferencia} alt="inicio"/>Transferência</a></li>
+                <li><a href="/"><img  src={Iconepagamentos} alt="inicio"/>Pagamentos</a></li>
+                <li><a href="/"><img  src={Iconeusuarios} alt="inicio"/>Usuários</a></li>
+                <li><a href="/"><img  src={IconeAgendamentos} alt="inicio"/>Agendamentos</a></li>
+                <li><a href="/"><img  src={IconesComprovantes} alt="inicio"/>Comprovantes</a></li>
+                <li><a href="/"><img  src={IconeTarifas} alt="inicio"/>Tarifas</a></li>
+                <li><a href="/"><img  src={IconeFaleConosco} alt="inicio"/>Fale Conosco</a></li>
+                <li><a href="/"><img  src={IconeBeneficios} alt="inicio"/>Beneficios</a></li>
+              </ul>
+            </div>
+            </nav>
+
+            <div id="wellcomediv">
+              <section id="sectioninfos">
+                <div id="logoenome">
+                  <h3><img src={Logobranco} id="logobranco" />Bem-vindo à conta <strong>Fernando</strong></h3>
+                </div>
+                <h5>Sessão ativa há 00:00</h5>
+                <Saldo />
+              </section>
+
+              <div className="buttondiv">
+                <GreenButton><a href="/">Depositar</a></GreenButton>
+                <GreenButton><a href="/">Trasferir</a></GreenButton>
+              </div>
+
+            </div>
+        </Headerdiv>
+        <section id="informacoesconta">
+          <div className="containfos">
+            <Saldo />
           </div>
 
-        </div>
-      </Headerdiv>
+          <div className="containfos">
+            <h4>Rentabilidade</h4>
+            <h2>R$ 222,00</h2>
+            <p id="tempoatualizacao">Atualizado ontem às 15:00hrs</p>
+          </div>
 
+          <div className="containfos" >
+            <div id="dadosconta">
+            <p>Nooma Design</p>
+            <p>81.809.187/0001-70</p>
+            <p>Banco Votorantim: 655</p>
+            <p>Agência: 1111</p>
+            <p>Conta: 62264022-7</p>
+            </div>
+            <button id="compartilhardados">COMPARTILHAR</button>
+          </div>
+        </section>
       </Container>
 
     </>

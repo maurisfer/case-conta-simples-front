@@ -6,7 +6,6 @@ height: 100%;
 font-family: Open Sans;
 font-weight: normal;
 
-
 nav {
   background-color: #fff;
   height: 52px;
@@ -25,7 +24,7 @@ nav {
     margin-left: 50px;
   }
   button:hover{
-    cursor: pointer ;
+    cursor: pointer;
   }
 }
 
@@ -98,12 +97,11 @@ nav {
 #menu
 {
   position: absolute;
-  width: 220px;
+  width: 255px;
 
-  box-shadow: 0 0 10px #85888C;
-  margin: -50px 0 0 -50px;
+  margin: 35px 0 0 -50px;
   padding: 50px;
-  padding-top: 80px;
+  padding-top: 40px;
   background-color: #fff;
   transform-origin: 0% 0%;
   transform: translate(-120%, 0);
@@ -149,9 +147,9 @@ div#wellcomediv{
     }
     h3 {
       font-weight: normal;
-    font-size: 18px;
-    line-height: 18px;
-    color: #FFFFFF;
+      font-size: 18px;
+      line-height: 18px;
+      color: #FFFFFF;
     }
     h4{
       font-weight: normal;
@@ -174,6 +172,11 @@ div#wellcomediv{
       margin:8px 6px -5px 8px;
     }
 
+
+.buttondiv{
+      margin-left: 60px
+    }
+}
     .mostrarsaldo{
       margin: 10px 0px 0px 80px;
       h2#mask{
@@ -201,15 +204,82 @@ div#wellcomediv{
       }
     }
 
-.buttondiv{
-      margin-left: 60px
+    section#informacoesconta{
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      align-items: center;
+      margin-top: 35px;
     }
-}
+    div.containfos{
+      background: #EFF8F0;
+      border: 1px solid #F0F0F0;
+      box-sizing: border-box;
+      border-radius: 10px;
+      width: 300px;
+      height: 116px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 30px;
+
+      #saldoconta{
+        margin-left: 0px;
+      }
+      h2{
+        font-weight: 600;
+        color: #45B34A;
+      }
+      h4{
+        font-size: 14px;
+        font-weight: normal;
+      }
+      p{
+      font-size: 13px;
+      text-align: start;
+      margin-left: -110px;
+      }
+      p#tempoatualizacao{
+        position: absolute;
+        font-size: 10px;
+        width: 50px;
+        margin-top:50px;
+        margin-left: 230px;
+        text-align:end ;
+        color: rgba(0, 0, 0, 0.5);
+      }
+
+      button#compartilhardados{
+        position: absolute;
+        width: 81.39px;
+        height: 24px;
+        background: #45B54A;
+        border: none;
+        border-radius:  4px;
+        color: #fff;
+        font-size: 10px;
+        margin-left: 100px;
+      }
+      button#compartilhardados:hover{
+        cursor: pointer;
+      }
+      }
+    }
+
 
 @media (min-width:600px){
   nav {
     margin:0px;
+    min-width: 220px;
     width: 220px;
+    height: 175px;
+    display: flex;
+    align-items: center;
+
+    #menu
+  { border-top:1px solid #707070 ;
+    margin: 80px 0 0 -50px;}
   }
   #navinfos{
     position: absolute;
@@ -219,10 +289,34 @@ div#wellcomediv{
       }
     }
   div#wellcomediv{
-    margin-left: 50px;
+    margin-left: 0px;
     width: 100%;
     display: flex;
     flex-direction: row;
+    padding-left: 40px;
+
+    div#logoenome{
+      margin-top: 35px;
+      h3{
+        font-size: 30px;
+        }
+      }
+      .buttondiv{
+        margin-top: 35px
+      }
+    }
+    section#informacoesconta{
+      display: flex;
+      flex-direction: row;
+      width: 100vw;
+      justify-content: center;
+      justify-items: center;
+      align-items: center;
+      margin-top: 35px;
+    }
+    div.containfos{
+      margin: 13px
+    }
   }
 
 
