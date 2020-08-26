@@ -11,11 +11,15 @@ const Grafico = () => {
 
   const chart = () => {
     setChartData({
-      labels: ['Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta'],
+      labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul' , 'Ago', 'Set', 'Nov', 'Dez'],
       datasets: [
         {
           label: 'Entrada',
+<<<<<<< HEAD
           data: [0, 1000, 550, 3000, 200], //Irá consumir backend
+=======
+          data: [0,10, 500, 20, 1000, 550, 3000, 200, 100, 5000, 110 ],
+>>>>>>> 3b956335ba7ad3f0679799db1b6294c3f957e7f5
           backgroundColor: [
             'rgba(0, 190, 62, 0.2)'
           ],
@@ -26,7 +30,11 @@ const Grafico = () => {
         },
         {
           label: 'Entrada',
+<<<<<<< HEAD
           data: [0, 1500, 350, 3500, 250], // Irá consumir o backend
+=======
+          data: [0,2000, 3000, 3000, 2000, 1000, 350, 3500, 250, 100, 200],
+>>>>>>> 3b956335ba7ad3f0679799db1b6294c3f957e7f5
           backgroundColor: [
             'rgba(412, 90, 62, 0.2)'
           ],
@@ -48,7 +56,7 @@ const Grafico = () => {
       padding: {
           left: 0,
           right: 0,
-          top: 0,
+          top: 10,
           bottom: 0
       }
   },
@@ -87,7 +95,6 @@ const Grafico = () => {
 
   return(
     <div className="canvas-container">
-    <h3>Entrada vs Saída</h3>
     <Line data={chartData} options={options} />
   </div>
   )

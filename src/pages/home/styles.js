@@ -217,6 +217,7 @@ div#wellcomediv{
       box-sizing: border-box;
       border-radius: 10px;
       width: 300px;
+      min-width: 300px;
       height: 116px;
       display: flex;
       flex-direction: column;
@@ -265,6 +266,14 @@ div#wellcomediv{
         cursor: pointer;
       }
       }
+    }
+    div#chart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 340px;
+    align-items: center;
+    margin: auto;
     }
 
 
@@ -316,6 +325,13 @@ div#wellcomediv{
     }
     div.containfos{
       margin: 13px
+    }
+    div#chart{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 954px;
+    margin-top: 50px;
     }
   }
 
