@@ -16,7 +16,7 @@ function Login() {
                 <img id="imglogo" src={Img} alt="Logo da conta simples"></img>
                 <h4>Preencha os campos abaixo para fazer login </h4>
 <<<<<<< HEAD
-                <label htmlFor="cpf" className="labellogin"> CPF: <br/> {/* Será CNPJ */}
+                <label htmlFor="cpf" className="labellogin"> CNPJ: <br/> {/* Será CNPJ */}
                   <input placeholder="Insira seu CPF" type='text' id="cpf"/>
 =======
                 <label htmlFor="cnpj" className="labellogin"> CPF: <br/>
