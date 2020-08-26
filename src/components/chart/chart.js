@@ -15,7 +15,7 @@ const Grafico = () => {
       datasets: [
         {
           label: 'Entrada',
-          data: [0, 1000, 550, 3000, 200],
+          data: [0, 1000, 550, 3000, 200], //Irá consumir backend
           backgroundColor: [
             'rgba(0, 190, 62, 0.2)'
           ],
@@ -26,7 +26,7 @@ const Grafico = () => {
         },
         {
           label: 'Entrada',
-          data: [0, 1500, 350, 3500, 250],
+          data: [0, 1500, 350, 3500, 250], // Irá consumir o backend
           backgroundColor: [
             'rgba(412, 90, 62, 0.2)'
           ],

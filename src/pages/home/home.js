@@ -1,3 +1,4 @@
+/* eslint-disable react/button-has-type */
 import React, {useState} from 'react';
 import GlobalStyle from '../../assets/styles/global';
 import {Container} from './styles'
@@ -110,11 +111,11 @@ function Home(){
 
           <div className="containfos" >
             <div id="dadosconta">
-            <p>Nooma Design</p>
-            <p>81.809.187/0001-70</p>
+            <p>Nooma Design</p> {/* Será trazido pelo backend */}
+            <p>81.809.187/0001-70</p> {/* Será trazido pelo backend */}
             <p>Banco Votorantim: 655</p>
             <p>Agência: 1111</p>
-            <p>Conta: 62264022-7</p>
+            <p>Conta: 62264022-7</p> {/* Será trazido pelo backend */}
             </div>
             <button id="compartilhardados">COMPARTILHAR</button>
           </div>
