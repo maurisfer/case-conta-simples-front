@@ -1,0 +1,30 @@
+.canvas-container {
+  position: absolute;
+  width: 310px;
+  height: 200px;
+  left: 105px;
+
+  background: #FDFDFD;
+  border: 1px solid #F0F0F0;
+  box-sizing: border-box;
+  border-radius: 10px;
+
+}
+
+
+
+@media (min-width:600px){
+
+  .canvas-container{
+    position: absolute;
+    width: 44%;
+    top: 476px;
+    left: 241px;
+
+    background: #FDFDFD;
+    border: 1px solid #F0F0F0;
+    box-sizing: border-box;
+    border-radius: 10px;
+
+  }
+}

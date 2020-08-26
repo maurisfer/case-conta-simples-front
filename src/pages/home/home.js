@@ -23,8 +23,7 @@ import IconeTarifas from "../../assets/images/iconesul/iconetarifas.svg"
 import IconeFaleConosco from "../../assets/images/iconesul/iconefaleconosco.svg"
 import IconeBeneficios from "../../assets/images/iconesul/iconebenefícios.svg"
 
-
-
+import Chart from '../../components/chart/chart';
 
 const Saldo = props => {
   const [checked, setChecked] = useState(false);
@@ -120,6 +119,8 @@ function Home(){
             <button id="compartilhardados">COMPARTILHAR</button>
           </div>
         </section>
+
+        <Chart />
       </Container>
 
     </>
