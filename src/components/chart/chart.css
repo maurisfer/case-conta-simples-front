@@ -1,13 +1,16 @@
 .canvas-container {
-  position: absolute;
+  /* position: absolute;
   width: 310px;
   height: 200px;
-  left: 105px;
-
+  left: 105px;*/
   background: #FDFDFD;
+
   border: 1px solid #F0F0F0;
   box-sizing: border-box;
   border-radius: 10px;
+  width: 311px;
+  display: flex;
+  flex-direction: column;
 
 }
 
@@ -17,9 +20,8 @@
 
   .canvas-container{
     position: absolute;
-    width: 44%;
-    top: 476px;
-    left: 241px;
+    width: 954px;
+    height: 310px;
 
     background: #FDFDFD;
     border: 1px solid #F0F0F0;

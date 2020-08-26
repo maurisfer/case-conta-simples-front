@@ -119,8 +119,10 @@ function Home(){
             <button id="compartilhardados">COMPARTILHAR</button>
           </div>
         </section>
-
-        <Chart />
+        <div id='chart'>
+          <h3>Entrada vs saída</h3>
+          <Chart />
+        </div>
       </Container>
 
     </>
