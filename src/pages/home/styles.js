@@ -267,6 +267,14 @@ div#wellcomediv{
       }
       }
     }
+    div#cardsdiv{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 340px;
+      align-items: center;
+      margin: auto;
+    }
     div#chart{
     display: flex;
     flex-direction: column;
@@ -310,7 +318,7 @@ div#wellcomediv{
       align-items: center;
       justify-items: center;
       width: 953px;
-      margin: 430px auto;
+      margin: 100px auto;
       div#transacoestitulo{
         display: flex;
         flex-direction: row;

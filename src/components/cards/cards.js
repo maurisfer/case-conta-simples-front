@@ -3,6 +3,7 @@ import React from 'react';
 import './cards.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import Imglogo from '../../assets/images/logobranco.svg'
 
 import cartao from '../../assets/images/cartao.svg';
 
@@ -25,7 +26,12 @@ function Cards() {
             </TabList>
             <TabPanel>
               <div className="cardImg">
-                <img className="cardImg" src={cartao} alt="cartao" />
+                <div className="cartaoficticio">
+                  <img src={Imglogo} className="logobranco"/>
+                  <p className="textocartao">Nooma Design <br/>
+                  ***** 0000 <br/>
+                    00/00/0000</p>
+                </div>
               </div>
               <div className="tab">
                 <table>
@@ -105,8 +111,13 @@ function Cards() {
               </div>
             </TabPanel>
             <TabPanel>
-              <div className="cardImg">
-              <img className="cardImg" src={cartao} alt="cartao" />
+            <div className="cardImg">
+                <div className="cartaoficticio">
+                  <img src={Imglogo} className="logobranco"/>
+                  <p className="textocartao">Nooma Design <br/>
+                  ***** 0000 <br/>
+                    00/00/0000</p>
+                </div>
               </div>
               <div className="tab">
                 <table>
@@ -132,8 +143,13 @@ function Cards() {
               </div>
             </TabPanel>
             <TabPanel>
-              <div className="cardImg">
-              <img className="cardImg" src={cartao} alt="cartao" />
+            <div className="cardImg">
+                <div className="cartaoficticio">
+                  <img src={Imglogo} className="logobranco"/>
+                  <p className="textocartao">Nooma Design <br/>
+                  ***** 0000 <br/>
+                    00/00/0000</p>
+                </div>
               </div>
               <div className="tab">
                 <table>
@@ -159,8 +175,13 @@ function Cards() {
               </div>
             </TabPanel>
             <TabPanel>
-              <div className="cardImg">
-              <img className="cardImg" src={cartao} alt="cartao" />
+            <div className="cardImg">
+                <div className="cartaoficticio">
+                  <img src={Imglogo} className="logobranco"/>
+                  <p className="textocartao">Nooma Design <br/>
+                  ***** 0000 <br/>
+                    00/00/0000</p>
+                </div>
               </div>
               <div className="tab">
                 <table>
@@ -186,8 +207,13 @@ function Cards() {
               </div>
             </TabPanel>
             <TabPanel>
-              <div className="cardImg">
-              <img className="cardImg" src={cartao} alt="cartao" />
+            <div className="cardImg">
+                <div className="cartaoficticio">
+                  <img src={Imglogo} className="logobranco"/>
+                  <p className="textocartao">Nooma Design <br/>
+                  ***** 0000 <br/>
+                    00/00/0000</p>
+                </div>
               </div>
               <div className="tab">
                 <table>

@@ -202,7 +202,9 @@ function Home() {
             <h3>Entrada vs saída</h3>
             <Chart />
           </div>
-          <Cards />
+          <div id="cardsdiv">
+            <Cards />
+          </div>
           <button id="cadastracartao">
             <Link to="/login">Cadastrar Cartão </Link>
           </button>
