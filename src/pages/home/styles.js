@@ -333,6 +333,7 @@ div#wellcomediv{
     width: 954px;
     margin-top: 50px;
     }
+    
   }
 
 
