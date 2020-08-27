@@ -25,6 +25,7 @@ import IconeBeneficios from "../../assets/images/iconesul/iconebenefícios.svg"
 
 import Chart from '../../components/chart/chart';
 
+
 const Saldo = props => {
   const [checked, setChecked] = useState(false);
   const style = checked? "mostrarsaldo" : "mostrarsaldo nao-mostrarsaldo"
