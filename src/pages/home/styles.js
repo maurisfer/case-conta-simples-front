@@ -310,7 +310,7 @@ div#wellcomediv{
       align-items: center;
       justify-items: center;
       width: 953px;
-      margin: 20px auto;
+      margin: 430px auto;
       div#transacoestitulo{
         display: flex;
         flex-direction: row;

@@ -1,17 +1,49 @@
-#tab {
-   display: flex;
-   align-items: center;
-   flex-direction: column;
-    margin: auto;
+.card {
+  background-color: #FDFDFD;
+
+  background: #FDFDFD;
+
+  border: 1px solid #F0F0F0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 311px;
+  display: flex;
+  flex-direction: column;
+  font-family: Open Sans;
+
+  overflow: auto;
+}
+@media (min-width:600px){
+  .card {
+    text-align: center;
+
+    position: absolute;
+    margin-left: 235px;
+    width: 954px;
+    height: 430px;
+    background: #FDFDFD;
+    border: 1px solid #F0F0F0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: auto;
+  }
+
+  .cardImg {
+    margin-top: 0px;
+  }
+  .tab {
+    overflow: auto;
+  }
+  table {
+    width: 100%;
+  }
+
+  th {
+    height: 50px;
+  }
+  Tab:hover {
+    background-color: pink;
 }
 
-@media (min-width:600px){
-  #tab{
 
-  }
-
-  .tab-title {
-
-
-  }
 }
