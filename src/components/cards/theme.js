@@ -11,7 +11,7 @@ export const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: "Open Sans",
+    fontFamily: "Niveau Grotesk, Open Sans",
     body2: {
       fontFamily: "Open Sans",
       fontSize: "1.1rem"

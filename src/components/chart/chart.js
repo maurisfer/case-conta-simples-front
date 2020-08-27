@@ -32,7 +32,7 @@ const Grafico = () => {
           borderWidth: 3,
         },
         {
-          label: 'Entrada',
+          label: 'Saída',
           data: [0, 2000, 3000, 3000, 2000, 1000, 350, 3500, 250, 100, 200],
           backgroundColor: ['rgba(412, 90, 62, 0.2)'],
           borderColor: ['rgba(412, 90, 62, 0.4)'],
@@ -57,7 +57,9 @@ const Grafico = () => {
     },
     elements: {
       point: {
-        radius: 2,
+        radius: 4,
+        backgroundColor: '#fff'
+
       },
     },
     legend: { display: false },
