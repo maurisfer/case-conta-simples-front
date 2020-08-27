@@ -276,6 +276,93 @@ div#wellcomediv{
     margin: auto;
     }
 
+    button#cadastracartao{
+      width: 200px;
+      height: 50px;
+      background: linear-gradient(270deg, rgba(2,0,36,1) 0%, #45B54A 0%, rgba(48,156,8,1) 100%);
+      border: 0.5px solid #FFFFFF;
+      border-radius: 4px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      transition: ease-in .2s;
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 18px;
+        padding:13px 24px;
+        &:hover {
+          color: #45B54A;
+        }
+      }
+
+      &:hover {
+        cursor: pointer;
+        border: 0.5px solid #45B54A;
+        background: #FFFFFF;
+
+      }
+
+    }
+    div#ultimastransacoes{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-items: center;
+      width: 953px;
+      margin: 20px auto;
+      div#transacoestitulo{
+        display: flex;
+        flex-direction: row;
+        align-content: space-between;
+        justify-content: space-between;
+        width: 953px;
+      }
+
+      button{
+        width: 127px;
+        height: 22px;
+        background: #45B54A;
+        border-radius: 4px;
+        border: none;
+        font-family: Niveau Grotesk;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 10px;
+        line-height: 12px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+
+
+        &:hover{
+          cursor: pointer;
+        }
+      }
+
+      table{
+      background: #FDFDFD;
+      border: 1px solid #F0F0F0;
+      box-sizing: border-box;
+      border-radius: 10px;
+      margin: auto;
+      width: 953px;
+      height: 342px;
+      }
+
+      th{
+        font-family: Niveau Grotesk;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 10px;
+        line-height: 10px;
+        letter-spacing: 0.03em;
+        color: rgba(0, 0, 0, 0.5);
+      }
+      td{
+        text-align: center;
+      }
+    }
+
 
 @media (min-width:600px){
   nav {
@@ -333,7 +420,7 @@ div#wellcomediv{
     width: 954px;
     margin-top: 50px;
     }
-    
+
   }
 
 

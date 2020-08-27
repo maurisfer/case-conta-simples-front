@@ -1,6 +1,8 @@
 /* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import GlobalStyle from '../../assets/styles/global';
+
 import { Container } from './styles';
 import { Headerdiv } from '../../assets/styles/headerdiv';
 import { GreenButton } from '../../assets/styles/greenbutton';
@@ -201,6 +203,46 @@ function Home() {
             <Chart />
           </div>
           <Cards />
+          <button id="cadastracartao">
+            <Link to="/login">Cadastrar Cartão </Link>
+          </button>
+
+          <div id="ultimastransacoes">
+            <div id="transacoestitulo">
+              <h3>Últimas Transações</h3>
+              <button id="mostrartransacoes">Mostrar todas</button>
+            </div>
+            <table>
+              <tr>
+                <th>Data da transação</th>
+                <th>Origem/favorecido</th>
+                <th>Tipo de operação</th>
+                <th>Final do cartão</th>
+                <th>Valor</th>
+              </tr>
+              <tr>
+                <td>DATA</td>
+                <td>Origem</td>
+                <td>Compra?</td>
+                <td>******000</td>
+                <td>R$ 00,00</td>
+              </tr>
+              <tr>
+                <td>DATA</td>
+                <td>Origem</td>
+                <td>Compra?</td>
+                <td>******000</td>
+                <td>R$ 00,00</td>
+              </tr>
+              <tr>
+                <td>DATA</td>
+                <td>Origem</td>
+                <td>Compra?</td>
+                <td>******000</td>
+                <td>R$ 00,00</td>
+              </tr>
+            </table>
+          </div>
         </Container>
       </>
     </div>

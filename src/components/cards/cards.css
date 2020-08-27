@@ -1,17 +1,17 @@
 #tab {
-
-
-
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+    margin: auto;
 }
 
 @media (min-width:600px){
   #tab{
-    margin-left: 245px;
 
   }
 
   .tab-title {
-    margin-left: 90px;
-    font-family: Open Sans;
+
+
   }
 }

@@ -112,60 +112,60 @@ export default function ScrollableTabsButtonAuto() {
           </Tabs>
         </AppBar>
         <TabPanel value={value} index={0}>
-          <di>
+          <div>
             <span className="tab-title">Data da transação</span>
             <span className="tab-title">Origem/Favorecido</span>
             <span className="tab-title">Tipo de Operação</span>
             <span className="tab-title">Valor</span>
-          </di>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <di>
+          <div>
             <span className="tab-title">Data da transação</span>
             <span className="tab-title">Origem/Favorecido</span>
             <span className="tab-title">Tipo de Operação</span>
             <span className="tab-title">Valor</span>
-          </di>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={2}>
-          <di>
+          <div>
             <span className="tab-title">Data da transação</span>
             <span className="tab-title">Origem/Favorecido</span>
             <span className="tab-title">Tipo de Operação</span>
             <span className="tab-title">Valor</span>
-          </di>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={3}>
-          <di>
+          <div>
             <span className="tab-title">Data da transação</span>
             <span className="tab-title">Origem/Favorecido</span>
             <span className="tab-title">Tipo de Operação</span>
             <span className="tab-title">Valor</span>
-          </di>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={4}>
-          <di>
+          <div>
             <span className="tab-title">Data da transação</span>
             <span className="tab-title">Origem/Favorecido</span>
             <span className="tab-title">Tipo de Operação</span>
             <span className="tab-title">Valor</span>
-          </di>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={5}>
-          <di>
+          <div>
             <span className="tab-title">Data da transação</span>
             <span className="tab-title">Origem/Favorecido</span>
             <span className="tab-title">Tipo de Operação</span>
             <span className="tab-title">Valor</span>
-          </di>
+          </div>
         </TabPanel>
         <TabPanel value={value} index={6}>
-          <di>
+          <div>
             <span className="tab-title">Data da transação</span>
             <span className="tab-title">Origem/Favorecido</span>
             <span className="tab-title">Tipo de Operação</span>
             <span className="tab-title">Valor</span>
-          </di>
+          </div>
         </TabPanel>
       </ThemeProvider>
     </div>
