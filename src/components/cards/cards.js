@@ -6,7 +6,11 @@ import 'react-tabs/style/react-tabs.css';
 import Imglogo from '../../assets/images/logobranco.svg';
 
 const styles = {
-  fontWeight: 'bolder',
+  fontWeight: '600',
+  border: ' 1px 1px 0px 5px solid #45B54A',
+  margin: '0px 5px',
+  color: '#45B54A',
+  borderRadius: '5px 5px 0px 0px'
 };
 
 const styles2 = {
@@ -17,10 +21,14 @@ function Cards() {
   function changeBackground(e) {
     e.target.style.background = '#45B54A';
     e.target.style.borderRadius = '5px 5px 0px 0px';
+    e.target.style.color = '#fff';
+    e.target.style.transition= '.2s ease'
   }
 
   function changeBackgroundNormal(e) {
     e.target.style.background = 'none';
+    e.target.style.color = '#45B54A';
+
   }
 
   return (

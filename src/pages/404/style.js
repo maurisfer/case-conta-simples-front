@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const PageTitle = styled.h2`
   font-family: 'Niveau Grotesk';
   font-size: 50px;
-  font-weight: bold;
+  font-weight: normal;
 `;
 
 export const Container = styled.div`
@@ -26,10 +26,10 @@ export const Container = styled.div`
     box-sizing: border-box;
     border-radius: 10px;
     margin-bottom: 30px;
-    padding: 5px;
-    border: 1.5px solid #45B54A;
-    background-color: #fff;
-    color:#45B54A;
+
+    border: 1.5px solid #fff;
+    color:#fff;
+    background-color: #45B54A;
     transition: 0.3s;
   }
 
@@ -39,19 +39,30 @@ export const Container = styled.div`
   }
 
   button:hover{
-    border: 1.5px solid #fff;
-    color:#fff;
-    background-color: #45B54A;
+
+    border: 1.5px solid #45B54A;
+    background-color: #fff;
+    color:#45B54A;
     cursor: pointer;
   }
 
   img{
-    color: #45B34A;
+
     width: 300px;
     height: 300px;
   }
 
   h3{
     font-family: 'Niveau Grotesk';
+    font-weight: normal;
+  }
+  a{
+    text-decoration: none;
+    color: #fff;
+    margin: auto ;
+    line-height: 40px;
+    &:hover{
+      color: #45B34A;
+    }
   }
 `;
