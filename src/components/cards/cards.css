@@ -1,5 +1,5 @@
 .card {
-  background-color: #FDFDFD;
+  background: #FDFDFD;
 
   border: 1px solid #F0F0F0;
   box-sizing: border-box;
@@ -7,20 +7,25 @@
   width: 311px;
   display: flex;
   flex-direction: column;
-  font-family: Niveau Grotesk;
+  font-family: Open Sans;
   margin: auto;
   overflow: auto;
+  justify-items: center;
 
+  }
 
+  .cardImg{
+    display: flex;
   }
   div.cartaoficticio{
     width: 188px;
     height: 108px;
-
+    display: flex;
+    align-items: center;
     background: #161616;
     box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
-    margin: 20px;
+    margin: 20px auto;
     padding: 8px;
 
 }
@@ -44,6 +49,30 @@ p.textocartao{
 
 }
 
+table{
+  background: #FDFDFD;
+  box-sizing: border-box;
+  margin: auto;
+  width: 953px;
+  height: auto;
+  }
+
+th{
+  font-family: Niveau Grotesk;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 10px;
+  letter-spacing: 0.03em;
+  color: rgba(0, 0, 0, 0.5);
+
+}
+
+td{
+  text-align: center;
+}
+
+
 @media (min-width:600px){
   .card {
     text-align: center;
@@ -60,7 +89,7 @@ p.textocartao{
 
   .cardImg {
     margin: auto;
-    width: 100px;
+    width: 188px;
   }
   .tab {
     overflow: auto;
