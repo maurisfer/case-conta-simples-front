@@ -16,10 +16,11 @@ const styles2 = {
 function Cards() {
   function changeBackground(e) {
     e.target.style.background = '#45B54A';
+    e.target.style.borderRadius = '5px 5px 0px 0px';
   }
 
   function changeBackgroundNormal(e) {
-    e.target.style.background = '#FDFDFD';
+    e.target.style.background = 'none';
   }
 
   return (
