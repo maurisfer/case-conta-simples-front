@@ -205,43 +205,6 @@ function Home() {
           <button id="cadastracartao">
             <Link to="/login">Cadastrar Cartão </Link>
           </button>
-
-          <div id="ultimastransacoes">
-            <div id="transacoestitulo">
-              <h3>Últimas Transações</h3>
-              <button id="mostrartransacoes">Mostrar todas</button>
-            </div>
-            <table>
-              <tr>
-                <th>Data da transação</th>
-                <th>Origem/favorecido</th>
-                <th>Tipo de operação</th>
-                <th>Final do cartão</th>
-                <th>Valor</th>
-              </tr>
-              <tr>
-                <td>DATA</td>
-                <td>Origem</td>
-                <td>Compra?</td>
-                <td>******000</td>
-                <td>R$ 00,00</td>
-              </tr>
-              <tr>
-                <td>DATA</td>
-                <td>Origem</td>
-                <td>Compra?</td>
-                <td>******000</td>
-                <td>R$ 00,00</td>
-              </tr>
-              <tr>
-                <td>DATA</td>
-                <td>Origem</td>
-                <td>Compra?</td>
-                <td>******000</td>
-                <td>R$ 00,00</td>
-              </tr>
-            </table>
-          </div>
         </Container>
       </>
     </div>

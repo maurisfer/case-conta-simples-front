@@ -4,6 +4,9 @@ import ImgLogin from '../../assets/images/login-image.svg';
 import Img from '../../assets/images/logo 01 mobile.svg';
 import GlobalStyle from '../../assets/styles/global';
 
+import MaskedInput from 'react-text-mask'
+
+
 function Login() {
   return (
     <div className="Login">
@@ -22,8 +25,8 @@ function Login() {
               <h4>Preencha os campos abaixo para fazer login </h4>
               <label htmlFor="cnpj" className="labellogin">
                 {' '}
-                CPF: <br />
-                <input placeholder="Insira seu CPF" type="text" id="cnpj" />
+                CNPJ: <br />
+                <MaskedInput mask={[/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', '0', '0', '0', /\d/, '-', /\d/, /\d/]} placeholder="Insira seu CNPJ" type="text" id="cnpj" />
               </label>
               <label htmlFor="senha" className="labellogin">
                 {' '}

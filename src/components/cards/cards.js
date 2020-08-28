@@ -5,13 +5,17 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './tab.css';
 import Imglogo from '../../assets/images/logobranco.svg';
 
+const styles = {
+  fontWeight: 'bold',
+}
+
 function Cards() {
   return (
     <div className="card">
-      <Tabs forceRenderTabPanel defaultIndex={1}>
-        <TabList activeTabClassName="is-selected">
-          <Tab>Cartões</Tab>
-          <Tab>Últimas Transações da Conta</Tab>
+      <Tabs forceRenderTabPanel defaultIndex={0}>
+        <TabList>
+          <Tab style={styles}>Cartões</Tab>
+          <Tab style={styles}>Últimas Transações da Conta</Tab>
         </TabList>
         <TabPanel>
           <Tabs forceRenderTabPanel>
