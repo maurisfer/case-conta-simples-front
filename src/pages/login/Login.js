@@ -10,16 +10,15 @@ function Login() {
       <>
         <GlobalStyle />
         <Container>
-<<<<<<< HEAD
           <img id="imglogin" src={ImgLogin} alt="Ilustração de mulher com cartão" />
             <div id="loginform">
               <form>
                 <img id="imglogo" src={Img} alt="Logo da conta simples"></img>
                 <h4>Preencha os campos abaixo para fazer login </h4>
-                <label htmlFor="cnpj" className="labellogin"> CPF: <br/>
-                <input placeholder="Insira seu CPF" type="text" id="cnpj" />
+                <label htmlFor="cnpj" className="labellogin"> CNPJ: <br/>
+                <input placeholder="Insira seu CNPJ" type="text" id="cnpj" />
                 </label>
-                <label htmlFor="senha" className="labellogin"> Senha: <br/> {/* Irá fazer um post pro backend para validação */}
+                <label htmlFor="senha" className="labellogin"> Senha: <br/> {/* Irá fazer um get pro backend para validação */}
                   <input placeholder="Insira sua senha" type='password' id="senha"/>
                 </label>
                 <input value="LOGIN" type= "submit" />
@@ -27,40 +26,6 @@ function Login() {
                 <a href="/">Ainda não sou cliente {">"}</a> {/* Irá direcionar para um formulário de cadastro */}
               </form>
             </div>
-=======
-
-          <img
-            id="imglogin"
-            src={ImgLogin}
-            alt="Ilustração de mulher com cartão"
-          />
-          <div id="loginform">
-            <form>
-              <img id="imglogo" src={Img} alt="Logo da conta simples" />
-              <h4>Preencha os campos abaixo para fazer login </h4>
-              <label htmlFor="cnpj" className="labellogin">
-                {' '}
-                CPF: <br />
-                <input placeholder="Insira seu CPF" type="text" id="cnpj" />
-              </label>
-              <label htmlFor="senha" className="labellogin">
-                {' '}
-                Senha: <br />{' '}
-                {/* Irá fazer um post pro backend para validação */}
-                <input
-                  placeholder="Insira sua senha"
-                  type="password"
-                  id="senha"
-                />
-              </label>
-              <input value="LOGIN" type="submit" />
-
-              <a href="/">Esqueci minha senha {'>'}</a> <br />
-              <a href="/">Ainda não sou cliente {'>'}</a>{' '}
-              {/* Irá direcionar para um formulário de cadastro */}
-            </form>
-          </div>
->>>>>>> c12b7a20874335db5976fd26e4b340c649c32d0a
         </Container>
       </>
     </div>

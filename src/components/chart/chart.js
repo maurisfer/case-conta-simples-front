@@ -6,11 +6,11 @@ import api from '../../services/api';
 defaults.global.maintainAspectRatio = false;
 
 const Grafico = () => {
-  const [chartData, setChartData] = useState([]);
+  const [chartData, setChartData] = useState({});
   const [chartDataCredit, setChartDataCredit] = useState([]);
   const [chartDataDebt, setChartDataDebt] = useState([]);
 
-  const chart = () => {
+  const chart = (cred, deb) => {
     setChartData({
       labels: [
         'Jan',
@@ -28,14 +28,14 @@ const Grafico = () => {
       datasets: [
         {
           label: 'Entradas',
-          data: chartDataCredit,
+          data: cred,
           backgroundColor: ['rgba(0, 190, 62, 0.2)'],
           borderColor: ['rgba(0, 190, 62, 0.4)'],
           borderWidth: 3,
         },
         {
           label: 'Saida',
-          data: chartDataDebt,
+          data: deb,
           backgroundColor: ['rgba(412, 90, 62, 0.2)'],
           borderColor: ['rgba(412, 90, 62, 0.4)'],
           borderWidth: 3,
@@ -44,16 +44,20 @@ const Grafico = () => {
     });
   };
   useEffect(() => {
-    async function loadInfosCd() {
+    async function loadData() {
       // Promise.all(api.get('transaction/deb'), api.get('transaction/cre'));
       // const { deb, cred } = Promise.all;
-      const responsecd = await api.get('/transactions/cre');
-      const responsedb = await api.get('/transactions/deb');
-      setChartDataCredit(responsecd.data.data);
-      setChartDataDebt(responsedb.data.data);
+      const responsecd = await api.get('transactions/cre');
+      const responsedb = await api.get('transactions/deb');
+      setChartDataCredit(responsecd.data);
+      setChartDataDebt(responsedb.data);
+      console.log(responsecd.data);
     }
-    loadInfosCd();
-    chart();
+    loadData();
+  }, []);
+
+  useEffect(() => {
+    chart(chartDataCredit, chartDataDebt);
   }, []);
 
   const options = {

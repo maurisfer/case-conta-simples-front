@@ -3,9 +3,9 @@ import React from 'react';
 import './cards.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import Imglogo from '../../assets/images/logobranco.svg'
+import Imglogo from '../../assets/images/logobranco.svg';
 
-import cartao from '../../assets/images/cartao.svg';
+// import cartao from '../../assets/images/cartao.svg';
 
 function Cards() {
   return (
