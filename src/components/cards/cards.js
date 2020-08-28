@@ -2,62 +2,25 @@
 import React from 'react';
 import './cards.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import 'react-tabs/style/react-tabs.css';
+import './tab.css';
 import Imglogo from '../../assets/images/logobranco.svg';
 
-const styles = {
-  fontWeight: '600',
-  border: ' 1px 1px 0px 5px solid #45B54A',
-  margin: '0px 5px',
-  color: '#45B54A',
-  borderRadius: '5px 5px 0px 0px'
-};
-
-const styles2 = {
-  fontWeight: 'normal',
-};
-
 function Cards() {
-  function changeBackground(e) {
-    e.target.style.background = '#45B54A';
-    e.target.style.borderRadius = '5px 5px 0px 0px';
-    e.target.style.color = '#fff';
-    e.target.style.transition= '.2s ease'
-  }
-
-  function changeBackgroundNormal(e) {
-    e.target.style.background = 'none';
-    e.target.style.color = '#45B54A';
-
-  }
-
   return (
     <div className="card">
       <Tabs forceRenderTabPanel defaultIndex={1}>
         <TabList activeTabClassName="is-selected">
-          <Tab
-            style={styles}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundNormal}
-          >
-            Cartões
-          </Tab>
-          <Tab
-            style={styles}
-            onMouseOver={changeBackground}
-            onMouseLeave={changeBackgroundNormal}
-          >
-            Últimas Transações da Conta
-          </Tab>
+          <Tab>Cartões</Tab>
+          <Tab>Últimas Transações da Conta</Tab>
         </TabList>
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
-              <Tab style={styles2}>Cartão Anúncio</Tab>
-              <Tab style={styles2}>Cartão Fornecedor</Tab>
-              <Tab style={styles2}>Cartão Escitório</Tab>
-              <Tab style={styles2}>Cartão Afiliados</Tab>
-              <Tab style={styles2}>Cartão Dropshipping</Tab>
+              <Tab>Cartão Anúncio</Tab>
+              <Tab>Cartão Fornecedor</Tab>
+              <Tab>Cartão Escitório</Tab>
+              <Tab>Cartão Afiliados</Tab>
+              <Tab>Cartão Dropshipping</Tab>
             </TabList>
             <TabPanel>
               <div className="cardImg">
@@ -402,9 +365,9 @@ function Cards() {
         <TabPanel>
           <Tabs forceRenderTabPanel>
             <TabList>
-              <Tab style={styles2}>Entrava vs Saída</Tab>
-              <Tab style={styles2}>Entrada</Tab>
-              <Tab style={styles2}>Saída</Tab>
+              <Tab>Entrava vs Saída</Tab>
+              <Tab>Entrada</Tab>
+              <Tab>Saída</Tab>
             </TabList>
             <TabPanel>
               <div className="tab">

@@ -429,6 +429,11 @@ div#wellcomediv{
     margin-top: 50px;
     }
 
+    #chart h3 {
+      margin-top: -40px;
+      padding-right:790px;
+    }
+
   }
 
 
