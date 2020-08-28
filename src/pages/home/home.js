@@ -157,14 +157,7 @@ function Home() {
             <div id="wellcomediv">
               <section id="sectioninfos">
                 <div id="logoenome">
-<<<<<<< HEAD
                   <h3><img src={Logobranco} id="logobranco" alt ="ff"/>Bem-vindo à conta <strong>Fernando{/*Será trazido pelo backend*/}</strong></h3>
-=======
-                  <h3>
-                    <img src={Logobranco} id="logobranco" alt="logo" />
-                    Bem-vindo à conta <strong>Fernando</strong>
-                  </h3>
->>>>>>> c12b7a20874335db5976fd26e4b340c649c32d0a
                 </div>
                 <h5>Sessão ativa há 00:00</h5>
                 <Saldo />

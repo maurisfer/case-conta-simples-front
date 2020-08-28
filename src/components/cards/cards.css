@@ -1,5 +1,5 @@
 .card {
-  background-color: #FDFDFD;
+  background: #FDFDFD;
 
   border: 1px solid #F0F0F0;
   box-sizing: border-box;
@@ -7,7 +7,7 @@
   width: 311px;
   display: flex;
   flex-direction: column;
-  font-family: Niveau Grotesk;
+  font-family: Open Sans;
   margin: auto;
   overflow: auto;
 
@@ -43,6 +43,30 @@ p.textocartao{
   text-align: start;
 
 }
+
+table{
+  background: #FDFDFD;
+  box-sizing: border-box;
+  margin: auto;
+  width: 953px;
+  height: 342px;
+  }
+
+th{
+  font-family: Niveau Grotesk;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 10px;
+  letter-spacing: 0.03em;
+  color: rgba(0, 0, 0, 0.5);
+
+}
+
+td{
+  text-align: center;
+}
+
 
 @media (min-width:600px){
   .card {
