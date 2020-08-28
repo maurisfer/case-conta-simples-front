@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Line, defaults } from 'react-chartjs-2';
 import './chart.css';
 import api from '../../services/api';
-import { createEvent } from '@testing-library/react';
 
 defaults.global.maintainAspectRatio = false;
 

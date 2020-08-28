@@ -1,0 +1,73 @@
+.card {
+  background-color: #FDFDFD;
+
+  border: 1px solid #F0F0F0;
+  box-sizing: border-box;
+  border-radius: 10px;
+  width: 311px;
+  display: flex;
+  flex-direction: column;
+  font-family: Niveau Grotesk;
+  margin: auto;
+  overflow: auto;
+
+
+  }
+  div.cartaoficticio{
+    width: 188px;
+    height: 108px;
+
+    background: #161616;
+    box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    margin: 20px;
+    padding: 8px;
+
+}
+img.logobranco{
+    float: left;
+}
+p.textocartao{
+  width: 103px;
+  height: 73px;
+  left: 1254px;
+  top: 229px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 13px;
+  line-height: 22px;
+  color: #FFFFFF;
+  margin: auto;
+  margin-top: 10px;
+  text-align: start;
+
+}
+
+@media (min-width:600px){
+  .card {
+    text-align: center;
+
+    position: absolute;
+    width: 954px;
+    height: 430px;
+    background: #FDFDFD;
+    border: 1px solid #F0F0F0;
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: auto;
+  }
+
+  .cardImg {
+    margin: auto;
+    width: 100px;
+  }
+  .tab {
+    overflow: auto;
+  }
+  table {
+    width: 100%;
+  }
+
+
+}
