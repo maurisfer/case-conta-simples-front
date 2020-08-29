@@ -55,18 +55,23 @@ table{
   background: #FDFDFD;
   box-sizing: border-box;
   margin: auto;
-  width: 953px;
+  width: 100%;
   height: auto;
   }
 
-th{
+tr > th.tab-title{
   font-family: Niveau Grotesk;
   font-style: normal;
   font-weight: normal;
-  font-size: 10px;
-  line-height: 10px;
+  font-size: 15px;
+  line-height: 20px;
   letter-spacing: 0.03em;
   color: rgba(0, 0, 0, 0.5);
+  border: 5px solid #FDFDFD;
+  border-top: 1px solid #45B54A;
+  padding: 20px;
+  margin:0px;
+
 
 }
 
@@ -78,7 +83,6 @@ td{
 @media (min-width:600px){
   .card {
     text-align: center;
-
     position: absolute;
     width: 954px;
     height: 430px;
@@ -94,7 +98,7 @@ td{
     width: 188px;
   }
   .tab {
-    overflow: auto;
+    width: 100%
   }
   table {
     width: 100%;

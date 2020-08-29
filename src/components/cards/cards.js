@@ -21,12 +21,17 @@ function Cards() {
         </TabList>
         <TabPanel>
           <Tabs forceRenderTabPanel>
-            <TabList>
+            <TabList id='listandocartoes'>
               <Tab>Cartão Anúncio</Tab>
               <Tab>Cartão Fornecedor</Tab>
               <Tab>Cartão Escritório</Tab>
               <Tab>Cartão Afiliados</Tab>
               <Tab>Cartão Dropshipping</Tab>
+              <Tab>Cartão Escritório</Tab>
+              <Tab>Cartão Escritório</Tab>
+              <Tab>Cartão Afiliados</Tab>
+              <Tab>Cartão Dropshipping</Tab>
+              <Tab>Cartão Escritório</Tab>
             </TabList>
             <TabPanel>
               <div className="cardImg">

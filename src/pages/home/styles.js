@@ -299,7 +299,7 @@ div#wellcomediv{
       margin: 20px auto;
       display: flex;
       align-items: center;
-      transition: ease-in .2s;
+      transition: .3s ease-in ;
       a {
         text-decoration: none;
         color: #fff;
@@ -365,16 +365,24 @@ div#wellcomediv{
       margin: auto;
       width: 953px;
       height: auto;
+      padding-top: 20px
       }
 
       th{
         font-family: Niveau Grotesk;
         font-style: normal;
         font-weight: normal;
-        font-size: 10px;
         line-height: 10px;
         letter-spacing: 0.03em;
         color: rgba(0, 0, 0, 0.5);
+        font-family: Niveau Grotesk;
+        font-size: 15px;
+        line-height: 20px;
+        border: 5px solid #FDFDFD;
+        border-top: 1px solid #45B54A;
+        padding: 20px;
+        margin:0px;
+
       }
       td{
         text-align: center;
