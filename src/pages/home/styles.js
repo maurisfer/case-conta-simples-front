@@ -19,7 +19,7 @@ nav {
   margin-left: 80px;
   display: flex;
   align-items: center;
-  button{
+  button#sino{
     border: none;
     background: none;
     margin-left: 50px;
@@ -304,7 +304,7 @@ div#wellcomediv{
         text-decoration: none;
         color: #fff;
         font-size: 15px;
-        padding:13px 24px;
+        padding:13px 40px;
         &:hover {
           color: #45B54A;
         }
@@ -332,12 +332,12 @@ div#wellcomediv{
         position: relative ;
         flex-direction: row;
         align-content: space-between;
-        justify-content: center;
+        justify-content: space-between;
         margin:  50px auto 10px;
         width: 80%;
       }
 
-      button{
+      button#mostrartransacoes{
         width: 127px;
         height: 22px;
         background: #45B54A;
@@ -435,10 +435,11 @@ div#wellcomediv{
   }
   #navinfos{
     position: absolute;
-    margin-left: 50px;
+    margin-left: 10px;
       button{
         margin-left: 10px;
       }
+
     }
   div#wellcomediv{
     margin-left: 0px;
@@ -457,6 +458,7 @@ div#wellcomediv{
         margin-top: 35px
       }
     }
+
     section#informacoesconta{
       display: flex;
       flex-direction: row;
@@ -469,6 +471,12 @@ div#wellcomediv{
     div.containfos{
       margin: 13px
     }
+    div#transacoestitulo{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 950px;
+    }
     div#chart{
     display: flex;
     flex-direction: column;
@@ -480,6 +488,11 @@ div#wellcomediv{
     #chart h3 {
       margin-top: -40px;
       padding-right:790px;
+    }
+
+    button#cadastracartao{
+      margin: auto;
+      margin-top: 100px
     }
 
 

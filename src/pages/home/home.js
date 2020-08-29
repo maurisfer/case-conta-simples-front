@@ -57,7 +57,7 @@ function Home() {
             <nav role="navigation">
               <div id="navinfos">
                 <img src={Imglogo} alt="logo da empresa" />
-                <button>
+                <button id="sino">
                   <img id="logo" src={Sino} alt="ativar notificações" />
                 </button>
               </div>

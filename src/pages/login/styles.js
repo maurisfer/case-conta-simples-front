@@ -47,7 +47,7 @@ export const Container = styled.div `
     margin-bottom: 10px
   }
 
-  form{
+  #loginform{
     display:flex;
     align-items: center;
     justify-content: center;
@@ -59,12 +59,23 @@ export const Container = styled.div `
     box-shadow: 10px 10px 14px rgba(0, 0, 0, 0.25);
   }
 
+  #tituloform{
+    margin-bottom: 50px
+  }
+  form{
+    display: flex;
+    flex-direction: column;
+    align-content: center
+  }
+
+
   input{
     width: 263px;
     height: 43px;
     border: 1px solid #F0F0F0;
     box-sizing: border-box;
     border-radius: 10px;
+    margin: auto;
     margin-bottom: 30px;
     padding: 5px
   }

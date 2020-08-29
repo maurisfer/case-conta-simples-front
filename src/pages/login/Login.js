@@ -20,9 +20,11 @@ function Login() {
             alt="Ilustração de mulher com cartão"
           />
           <div id="loginform">
-            <form>
+            <div id='tituloform'>
               <img id="imglogo" src={Img} alt="Logo da conta simples" />
               <h4>Preencha os campos abaixo para fazer login </h4>
+            </div>
+            <form>
               <label htmlFor="cnpj" className="labellogin">
                 {' '}
                 CNPJ: <br />
@@ -39,11 +41,11 @@ function Login() {
                 />
               </label>
               <input value="LOGIN" type="submit" />
-
+              </form>
               <a href="/">Esqueci minha senha {'>'}</a> <br />
               <a href="/">Ainda não sou cliente {'>'}</a>{' '}
               {/* Irá direcionar para um formulário de cadastro */}
-            </form>
+
           </div>
         </Container>
       </>
