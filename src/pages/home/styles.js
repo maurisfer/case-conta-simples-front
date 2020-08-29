@@ -364,7 +364,7 @@ div#wellcomediv{
       border-radius: 10px;
       margin: auto;
       width: 953px;
-      height: 342px;
+      height: auto;
       }
 
       th{
