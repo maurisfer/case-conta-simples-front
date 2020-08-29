@@ -296,14 +296,14 @@ div#wellcomediv{
       background: linear-gradient(270deg, rgba(2,0,36,1) 0%, #45B54A 0%, rgba(48,156,8,1) 100%);
       border: 0.5px solid #FFFFFF;
       border-radius: 4px;
-      margin: auto;
+      margin: 20px auto;
       display: flex;
       align-items: center;
       transition: ease-in .2s;
       a {
         text-decoration: none;
         color: #fff;
-        font-size: 18px;
+        font-size: 15px;
         padding:13px 24px;
         &:hover {
           color: #45B54A;
@@ -324,15 +324,17 @@ div#wellcomediv{
       align-items: center;
       justify-items: center;
       width: 80%;
-      margin: 100px auto;
+      margin: 0px auto 100px;
       box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
-      overflow: auto;
+      overflow: auto;}
       div#transacoestitulo{
         display: flex;
+        position: relative ;
         flex-direction: row;
         align-content: space-between;
-        justify-content: space-between;
-        width: 953px;
+        justify-content: center;
+        margin:  50px auto 10px;
+        width: 80%;
       }
 
       button{
@@ -480,7 +482,6 @@ div#wellcomediv{
       padding-right:790px;
     }
 
-  }
 
   @media (min-width:1250px){
     #menuToggle span:first-child
@@ -528,6 +529,10 @@ div#wellcomediv{
   transform: none;
   transition: none;
 }
+div#ultimastransacoes{
+      width: 953px;
+
+  }
 
 #footerConta {
   position: absolute;

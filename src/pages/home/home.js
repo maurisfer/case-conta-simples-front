@@ -212,11 +212,11 @@ function Home() {
             <Link to="/login">Cadastrar Cartão </Link>
           </button>
 
-          <div id="ultimastransacoes">
             <div id="transacoestitulo">
               <h3>Últimas Transações</h3>
               <button id="mostrartransacoes">Mostrar todas</button>
             </div>
+          <div id="ultimastransacoes">
             <table>
               <tr>
                 <th>Data da transação</th>
@@ -255,11 +255,11 @@ function Home() {
             <p>CNPJ <b>81.809.187/0001-70</b></p>
           </span>
           <span id="footer">
-                  <h5>Frase do dia</h5>
-                  <p id="frase">Eles vão invejá-lo pelo seu sucesso, sua riqueza, sua inteligência, sua aparência, seu estatuto - mas raramente pela sua sabedoria.</p>
-                  <p id="autorFrase">Nassim Nicholas Taleb</p>
-                  <p id="equipeB">Com carinho, Equipe B ♥</p>
-                </span>
+              <h5>Frase do dia</h5>
+              <p id="frase">Eles vão invejá-lo pelo seu sucesso, sua riqueza, sua inteligência, sua aparência, seu estatuto - mas raramente pela sua sabedoria.</p>
+              <p id="autorFrase">Nassim Nicholas Taleb</p>
+              <p id="equipeB">Com carinho, Equipe B ♥</p>
+          </span>
         </Container>
       </>
     </div>
