@@ -7,6 +7,9 @@ import Imglogo from '../../assets/images/logobranco.svg';
 
 const styles = {
   fontWeight: 'bold',
+  backgroundColor: '#45B54A',
+  borderBottom: '1px solid #aaa',
+  width: '100%',
 }
 
 function Cards() {
@@ -15,7 +18,6 @@ function Cards() {
       <Tabs forceRenderTabPanel defaultIndex={0}>
         <TabList>
           <Tab style={styles}>Cartões</Tab>
-          <Tab style={styles}>Últimas Transações da Conta</Tab>
         </TabList>
         <TabPanel>
           <Tabs forceRenderTabPanel>
@@ -366,87 +368,7 @@ function Cards() {
             </TabPanel>
           </Tabs>
         </TabPanel>
-        <TabPanel>
-          <Tabs forceRenderTabPanel>
-            <TabList>
-              <Tab>Entrava vs Saída</Tab>
-              <Tab>Entrada</Tab>
-              <Tab>Saída</Tab>
-            </TabList>
-            <TabPanel>
-              <div className="tab">
-                <table>
-                  <tr>
-                    <th className="tab-title">Data da transação</th>
-                    <th className="tab-title">Origem/Favorecido</th>
-                    <th className="tab-title">Tipo de Operação</th>
-                    <th className="tab-title">Valor</th>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">15/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Crédito</td>
-                    <td className="tab-title">R$ 8.000,00</td>
-                  </tr>
-                </table>
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="tab">
-                <table>
-                  <tr>
-                    <th className="tab-title">Data da transação</th>
-                    <th className="tab-title">Origem/Favorecido</th>
-                    <th className="tab-title">Tipo de Operação</th>
-                    <th className="tab-title">Valor</th>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">16/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Crédito</td>
-                    <td className="tab-title">R$ 9.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">15/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">crédito</td>
-                    <td className="tab-title">R$ 8.000,00</td>
-                  </tr>
-                </table>
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="tab">
-                <table>
-                  <tr>
-                    <th className="tab-title">Data da transação</th>
-                    <th className="tab-title">Origem/Favorecido</th>
-                    <th className="tab-title">Tipo de Operação</th>
-                    <th className="tab-title">Valor</th>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">13/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 4.000,00</td>
-                  </tr>
-                </table>
-              </div>
-            </TabPanel>
-          </Tabs>
-        </TabPanel>
+
       </Tabs>
     </div>
   );
