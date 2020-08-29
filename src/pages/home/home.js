@@ -39,7 +39,9 @@ const Saldo = (props) => {
       <button onClick={() => setChecked(!checked)}>
         <img src={vizualizacao} id="botaosaldo" alt="mostrar/esconder saldo" />
       </button>
-      <h2 id="mask">R$ ****,00</h2>
+      <h2 id="mask" className="borrao">
+        R$ ****,00
+      </h2>
       <h2 id="saldo">R$ 2.000,00</h2>
     </div>
   );
@@ -56,7 +58,7 @@ function Home() {
               <div id="navinfos">
                 <img src={Imglogo} alt="logo da empresa" />
                 <button>
-                  <img src={Sino} alt="ativar notificações" />
+                  <img id="logo" src={Sino} alt="ativar notificações" />
                 </button>
               </div>
 
@@ -157,14 +159,11 @@ function Home() {
             <div id="wellcomediv">
               <section id="sectioninfos">
                 <div id="logoenome">
-<<<<<<< HEAD
                   <h3>
-                    <img src={Logobranco} id="logobranco" alt="logo" />
-                    Bem-vindo à conta <strong>Fernando</strong>
+                    <img src={Logobranco} id="logobranco" alt="ff" />
+                    Bem-vindo à conta{' '}
+                    <strong>Fernando{/* Será trazido pelo backend */}</strong>
                   </h3>
-=======
-                  <h3><img src={Logobranco} id="logobranco" alt ="ff"/>Bem-vindo à conta <strong>Fernando{/*Será trazido pelo backend*/}</strong></h3>
->>>>>>> 2a5d663d658aed58750b369d5a9240d01de30a8d
                 </div>
                 <h5>Sessão ativa há 00:00</h5>
                 <Saldo />
@@ -249,6 +248,18 @@ function Home() {
               </tr>
             </table>
           </div>
+          <span id="footerConta">
+            <h4>Nooma Design</h4>
+            <p>Agência 0001</p>
+            <p>Conta 443322-1</p>
+            <p>CNPJ <b>81.809.187/0001-70</b></p>
+          </span>
+          <span id="footer">
+                  <h5>Frase do dia</h5>
+                  <p id="frase">Eles vão invejá-lo pelo seu sucesso, sua riqueza, sua inteligência, sua aparência, seu estatuto - mas raramente pela sua sabedoria.</p>
+                  <p id="autorFrase">Nassim Nicholas Taleb</p>
+                  <p id="equipeB">Com carinho, Equipe B ♥</p>
+                </span>
         </Container>
       </>
     </div>

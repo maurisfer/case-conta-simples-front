@@ -5,6 +5,7 @@ width: 100vw;
 height: 100%;
 font-family: Open Sans;
 font-weight: normal;
+background: #F4FCF5;
 
 nav {
   background-color: #fff;
@@ -38,6 +39,7 @@ nav {
   z-index: 1;
   -webkit-user-select: none;
   user-select: none;
+
 }
 
 #menuToggle input
@@ -65,6 +67,7 @@ nav {
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
   background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
   opacity 0.55s ease;
+
 }
 
 #menuToggle span:first-child
@@ -106,12 +109,13 @@ nav {
   transform-origin: 0% 0%;
   transform: translate(-120%, 0);
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
 }
 
 #menu li
 {
   width: 220px;
-  padding: 3px 0;
+  padding: 7px 0;
   list-style: none;
   transition-delay: 2s;
 }
@@ -181,6 +185,7 @@ div#wellcomediv{
       margin: 10px 0px 0px 80px;
       h2#mask{
         display: none;
+
       }
       h2#saldo {
         display: block;
@@ -224,6 +229,7 @@ div#wellcomediv{
       align-items: center;
       justify-content: center;
       margin-bottom: 30px;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
 
       #saldoconta{
         margin-left: 0px;
@@ -319,6 +325,7 @@ div#wellcomediv{
       justify-items: center;
       width: 953px;
       margin: 100px auto;
+      box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
       div#transacoestitulo{
         display: flex;
         flex-direction: row;
@@ -370,6 +377,44 @@ div#wellcomediv{
         text-align: center;
       }
     }
+
+    #footerConta {
+  position: absolute;
+  margin-top: -90px;
+  background-color: #45B54A;
+  width: 100%;
+  height: 129px;
+  text-align: center;
+
+}
+
+#footerConta h4 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-bottom:10px;
+  color: #FFFFFF;
+}
+#footerConta p {
+  padding-left: 20px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: rgba(255, 255, 255, 0.5);
+}
+
+#footer {
+  display: none;
+}
 
 
 @media (min-width:600px){
@@ -435,6 +480,161 @@ div#wellcomediv{
     }
 
   }
+
+  @media (min-width:1250px){
+    #menuToggle span:first-child
+{
+  transform-origin: none;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: none;
+}
+
+  #menuToggle input:checked ~ span
+{
+  opacity: 0;
+  transform: none;
+  background: #45B54A;
+}
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: none;
+}
+
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: none;
+}
+
+#menuToggle span {
+  opacity: 0;
+}
+
+#menu
+{
+  position: absolute;
+  width: 255px;
+  height: 1555px;
+
+  margin: 35px 0 0 -50px;
+  padding: 50px;
+  padding-top: 40px;
+  background-color: #fff;
+  transform-origin: none;
+  transform: none;
+  transition: none;
+}
+
+#footerConta {
+  position: absolute;
+  margin-top: 72px;
+  background-color: #45B54A;
+  width: 220px;
+  height: 129px;
+
+}
+
+#footerConta h4 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 20px;
+
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-bottom:10px;
+  color: #FFFFFF;
+
+  text-align: left;
+}
+#footerConta p {
+  padding-left: 20px;
+
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: rgba(255, 255, 255, 0.5);
+
+  text-align: left;
+}
+
+#footer {
+  position: absolute;
+  margin-top: -100px;
+  margin-left: 220px;
+  background: #F4FCF5;
+  width: 85%;
+  height: 300px;
+  display: block;
+
+}
+
+#footer h5 {
+  font-family: Niveau Grotesk;
+  font-style: normal;
+  font-size: 8px;
+  letter-spacing: 0.35em;
+
+  color: rgba(0, 0, 0, 0.5);
+
+  padding-top: 180px;
+  padding-left: 435px;
+
+}
+
+#autorFrase {
+padding-top: 3px;
+
+font-family: Niveau Grotesk;
+font-style: normal;
+font-weight: 300;
+font-size: 11px;
+line-height: 13px;
+
+
+padding-left: 425px;
+
+color: rgba(0, 0, 0, 0.5);
+
+}
+
+#frase {
+  padding-top: 10px;
+  font-family: Niveau Grotesk;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+
+padding-left: 115px;
+
+color: #000000;
+}
+
+#equipeB {
+  padding-top: 45px;
+  font-family: Niveau Grotesk;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+
+padding-left: 405px;
+
+color: rgba(0, 0, 0, 0.5);
+
+}
+
+}
+
+
 
 
 
