@@ -28,7 +28,7 @@ function Criarcartao() {
               <label htmlFor="senha" className="labellogin">
                 {' '}
                 Senha: <br />{' '}
-                {/* Irá fazer um post pro backend para validação */}
+                {/* Irá fazer um get pro backend para validação */}
                 <input
                   placeholder="Insira sua senha"
                   type="password"

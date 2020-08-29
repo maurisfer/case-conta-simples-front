@@ -2,6 +2,12 @@
 import React from 'react';
 import './cards.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+<<<<<<< HEAD
+import 'react-tabs/style/react-tabs.css';
+import Imglogo from '../../assets/images/logobranco.svg';
+
+// import cartao from '../../assets/images/cartao.svg';
+=======
 import './tab.css';
 import Imglogo from '../../assets/images/logobranco.svg';
 
@@ -11,6 +17,7 @@ const styles = {
   borderBottom: '1px solid #aaa',
   width: '100%',
 }
+>>>>>>> 2a5d663d658aed58750b369d5a9240d01de30a8d
 
 function Cards() {
   return (
