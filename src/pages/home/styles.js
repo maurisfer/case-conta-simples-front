@@ -323,9 +323,10 @@ div#wellcomediv{
       flex-direction: column;
       align-items: center;
       justify-items: center;
-      width: 953px;
+      width: 80%;
       margin: 100px auto;
       box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+      overflow: auto;
       div#transacoestitulo{
         display: flex;
         flex-direction: row;

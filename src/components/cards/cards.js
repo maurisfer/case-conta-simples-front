@@ -24,7 +24,7 @@ function Cards() {
             <TabList>
               <Tab>Cartão Anúncio</Tab>
               <Tab>Cartão Fornecedor</Tab>
-              <Tab>Cartão Escitório</Tab>
+              <Tab>Cartão Escritório</Tab>
               <Tab>Cartão Afiliados</Tab>
               <Tab>Cartão Dropshipping</Tab>
             </TabList>
