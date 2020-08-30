@@ -1,14 +1,57 @@
-import React from 'react';
+import React, { useState } from 'react';
+import MaskedInput from 'react-text-mask'
 import { Container } from './styles';
 import ImgLogin from '../../assets/images/login-image.svg';
 import Img from '../../assets/images/logo 01 mobile.svg';
 import GlobalStyle from '../../assets/styles/global';
-
-import MaskedInput from 'react-text-mask'
-
+import api from '../../services/api';
 
 function Login() {
+  const token = localStorage.getItem('@conta-simples/token');
+
+  if (token) {
+    window.location.href = '/home';
+  }
+
+  const [infos, setInfos] = useState({
+    enterpriseID: '',
+    password: '',
+  });
+
+  const onFormSubmit = async (e) => {
+    e.preventDefault();
+
+    const { enterpriseID, password } = infos;
+
+    const infosToApi = {
+      enterpriseID,
+      password,
+    };
+
+    const response = await api.get('/login', infosToApi);
+    console.log(response);
+
+    if (response.status !== 200) {
+      console.log(response);
+      return alert('Houve um erro no login');
+    }
+
+    localStorage.setItem('@conta-simples/token', response.data.token);
+
+    alert('Usuário autenticado com sucesso');
+
+    window.location.href = '/home';
+  };
+
+  const handleInputChanges = async (e) => {
+    setInfos({
+      ...infos,
+      [e.target.name]: e.target.value,
+    });
+  };
+
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <div className="Login">
       <>
         <GlobalStyle />
@@ -24,11 +67,37 @@ function Login() {
               <img id="imglogo" src={Img} alt="Logo da conta simples" />
               <h4>Preencha os campos abaixo para fazer login </h4>
             </div>
-            <form>
+            <form onSubmit={onFormSubmit}>
               <label htmlFor="cnpj" className="labellogin">
                 {' '}
                 CNPJ: <br />
-                <MaskedInput mask={[/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', '0', '0', '0', /\d/, '-', /\d/, /\d/]} placeholder="Insira seu CNPJ" type="text" id="cnpj" />
+                <MaskedInput
+                  mask={[
+                    /[0-9]/,
+                    /\d/,
+                    '.',
+                    /\d/,
+                    /\d/,
+                    /\d/,
+                    '.',
+                    /\d/,
+                    /\d/,
+                    /\d/,
+                    '/',
+                    /\d/,
+                    /\d/,
+                    /\d/,
+                    /\d/,
+                    '-',
+                    /\d/,
+                    /\d/,
+                  ]}
+                  placeholder="Insira seu CNPJ"
+                  type="text"
+                  id="cnpj"
+                  name="cnpj"
+                  onChange={handleInputChanges}
+                />
               </label>
               <label htmlFor="senha" className="labellogin">
                 {' '}
@@ -37,15 +106,15 @@ function Login() {
                 <input
                   placeholder="Insira sua senha"
                   type="password"
+                  name='password'
                   id="senha"
+                  onChange={handleInputChanges}
                 />
               </label>
               <input value="LOGIN" type="submit" />
-              </form>
-              <a href="/">Esqueci minha senha {'>'}</a> <br />
-              <a href="/">Ainda não sou cliente {'>'}</a>{' '}
-              {/* Irá direcionar para um formulário de cadastro */}
-
+            </form>
+             <a href="/">Esqueci minha senha {'>'}</a> <br />
+            <a href="/">Ainda não sou cliente {'>'}</a>{' '}
           </div>
         </Container>
       </>
