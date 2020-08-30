@@ -4,7 +4,6 @@ import './cards.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './tab.css';
 import Imglogo from '../../assets/images/logobranco.svg';
-
 import api from '../../services/api';
 
 const styles = {
@@ -15,17 +14,17 @@ const styles = {
 };
 
 function Cards() {
-  const [infos, setInfos] = useState([]);
+  const [infos, setInfos] = useState({});
 
   useEffect(() => {
     async function loadInfos() {
-      // conts id-conta = localStorage.getItem('@conta-simples/id')
-      const response = await api.get('');
-
+      const { account_id } = await localStorage.getItem('@conta-simples/id');
+      const response = await api.get('/card', account_id);
       setInfos(response.data);
     }
     loadInfos();
   }, []);
+
   return (
     <div className="card">
       <Tabs forceRenderTabPanel defaultIndex={0}>
@@ -36,18 +35,16 @@ function Cards() {
           {infos.map((info) => (
             <Tabs forceRenderTabPanel>
               <TabList id="listandocartoes">
-                <Tab>{info.cardName}</Tab>
+                <Tab> Cartão {info.cardName}</Tab>
 
               </TabList>
               <TabPanel>
                 <div className="cardImg">
                   <div className="cartaoficticio">
                     <img src={Imglogo} className="logobranco" />
-                    <p className="textocartao">
-                      Nooma Design <br />
-                      {info.cardNumber} <br />
-                      {info.cardExpire}
-                    </p>
+                    <p className="textocartao"> Nooma Design</p><br /> {/* Vai puxar do accountModel */}
+                    <p className="textocartao">{info.cardNumber}</p> <br />
+                    <p className="textocartao">{info.cardExpire}</p>
                   </div>
                 </div>
                 <div className="tab">
