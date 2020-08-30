@@ -19,6 +19,7 @@ function Cards() {
 
   useEffect(() => {
     async function loadInfos() {
+      // conts id-conta = localStorage.getItem('@conta-simples/id')
       const response = await api.get('');
 
       setInfos(response.data);
