@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Line, defaults } from 'react-chartjs-2';
 import './chart.css';
 import api from '../../services/api';
@@ -7,10 +7,10 @@ defaults.global.maintainAspectRatio = false;
 
 const Grafico = () => {
   const [chartData, setChartData] = useState({});
-  const [chartDataCredit, setChartDataCredit] = useState([]);
-  const [chartDataDebt, setChartDataDebt] = useState([]);
+  const [chartDataCredit, setChartDataCredit] = useState();
+  const [chartDataDebt, setChartDataDebt] = useState();
 
-  const chart = (cred, deb) => {
+  const chart = () => {
     setChartData({
       labels: [
         'Jan',
@@ -28,14 +28,14 @@ const Grafico = () => {
       datasets: [
         {
           label: 'Entradas',
-          data: cred,
+          data: chartDataCredit,
           backgroundColor: ['rgba(0, 190, 62, 0.2)'],
           borderColor: ['rgba(0, 190, 62, 0.4)'],
           borderWidth: 3,
         },
         {
           label: 'Saida',
-          data: deb,
+          data: chartDataDebt,
           backgroundColor: ['rgba(412, 90, 62, 0.2)'],
           borderColor: ['rgba(412, 90, 62, 0.4)'],
           borderWidth: 3,
@@ -43,21 +43,21 @@ const Grafico = () => {
       ],
     });
   };
+
   useEffect(() => {
     async function loadData() {
       // Promise.all(api.get('transaction/deb'), api.get('transaction/cre'));
-      // const { deb, cred } = Promise.all;
-      const responsecd = await api.get('transactions/cre');
+      // const { debt, credit } = Promise.all;
+      const responsecd = await api.get('transactions/cre'); // Retorna um array
       const responsedb = await api.get('transactions/deb');
-      setChartDataCredit(responsecd.data);
       setChartDataDebt(responsedb.data);
-      console.log(responsecd.data);
+      setChartDataCredit(responsecd.data);
+      // console.log(responsecd.data);
+      // setChartDataCredit(credit);
+      // setChartDataDebt(debt);
     }
     loadData();
-  }, []);
-
-  useEffect(() => {
-    chart(chartDataCredit, chartDataDebt);
+    chart();
   }, []);
 
   const options = {

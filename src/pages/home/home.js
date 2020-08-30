@@ -48,6 +48,8 @@ const Saldo = (props) => {
 };
 
 function Home() {
+  const accountId = localStorage.getItem('@conta-simples/accountid');
+
   return (
     <div className="Home">
       <>
@@ -209,7 +211,7 @@ function Home() {
             <Cards />
           </div>
           <button id="cadastracartao">
-            <Link to="/login">Cadastrar Cartão </Link>
+            <Link to={`/cadastrarcartao/${accountId}`}>Cadastrar Cartão </Link>
           </button>
 
             <div id="transacoestitulo">

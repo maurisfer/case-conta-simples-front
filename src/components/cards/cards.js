@@ -14,6 +14,7 @@ const styles = {
 };
 
 function Cards() {
+<<<<<<< HEAD
   const [infos, setInfos] = useState({});
 
   useEffect(() => {
@@ -25,6 +26,9 @@ function Cards() {
     loadInfos();
   }, []);
 
+=======
+  const token =
+>>>>>>> conexao-api
   return (
     <div className="card">
       {infos.map((info) => (
