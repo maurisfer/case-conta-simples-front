@@ -20,20 +20,23 @@ function Cards() {
   useEffect(() => {
     async function loadInfos() {
       const response = await api.get('');
+      console.log(response.data);
+      setInfos([response.data]);
 
-      setInfos(response.data);
     }
     loadInfos();
   }, []);
+
   return (
     <div className="card">
-      <Tabs forceRenderTabPanel defaultIndex={0}>
+      {infos.map((info) => (
+      <Tabs forceRenderTabPanel defaultIndex={0} key={info._id}>
         <TabList>
           <Tab style={styles}>Cartões</Tab>
         </TabList>
         <TabPanel>
-          {infos.map((info) => (
-            <Tabs forceRenderTabPanel>
+
+            <Tabs forceRenderTabPanel >
               <TabList id="listandocartoes">
                 <Tab>{info.cardName}</Tab>
 
@@ -377,9 +380,10 @@ function Cards() {
                 </div>
               </TabPanel>
             </Tabs>
-          ))}
+
         </TabPanel>
       </Tabs>
+      ))}
     </div>
   );
 }
