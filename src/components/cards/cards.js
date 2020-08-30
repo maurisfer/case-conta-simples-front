@@ -1,18 +1,30 @@
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './cards.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import './tab.css';
 import Imglogo from '../../assets/images/logobranco.svg';
+
+import api from '../../services/api';
 
 const styles = {
   fontWeight: 'bold',
   backgroundColor: '#45B54A',
   borderBottom: '1px solid #aaa',
   width: '100%',
-}
+};
 
 function Cards() {
+  const [infos, setInfos] = useState([]);
+
+  useEffect(() => {
+    async function loadInfos() {
+      const response = await api.get('');
+
+      setInfos(response.data);
+    }
+    loadInfos();
+  }, []);
   return (
     <div className="card">
       <Tabs forceRenderTabPanel defaultIndex={0}>
@@ -20,360 +32,361 @@ function Cards() {
           <Tab style={styles}>Cartões</Tab>
         </TabList>
         <TabPanel>
-          <Tabs forceRenderTabPanel>
-            <TabList id='listandocartoes'>
-              <Tab>Cartão Anúncio</Tab>
-              <Tab>Cartão Fornecedor</Tab>
-              <Tab>Cartão Escritório</Tab>
-              <Tab>Cartão Afiliados</Tab>
-              <Tab>Cartão Dropshipping</Tab>
-              <Tab>Cartão Escritório</Tab>
-              <Tab>Cartão Escritório</Tab>
-              <Tab>Cartão Afiliados</Tab>
-              <Tab>Cartão Dropshipping</Tab>
-              <Tab>Cartão Escritório</Tab>
-            </TabList>
-            <TabPanel>
-              <div className="cardImg">
-                <div className="cartaoficticio">
-                  <img src={Imglogo} className="logobranco" />
-                  <p className="textocartao">
-                    Nooma Design <br />
-                    ***** 0000 <br />
-                    00/00/0000
-                  </p>
+          {infos.map((info) => (
+            <Tabs forceRenderTabPanel>
+              <TabList id="listandocartoes">
+                <Tab>Cartão Anúncio</Tab>
+                <Tab>Cartão Fornecedor</Tab>
+                <Tab>Cartão Escritório</Tab>
+                <Tab>Cartão Afiliados</Tab>
+                <Tab>Cartão Dropshipping</Tab>
+                <Tab>Cartão Escritório</Tab>
+                <Tab>Cartão Escritório</Tab>
+                <Tab>Cartão Afiliados</Tab>
+                <Tab>Cartão Dropshipping</Tab>
+                <Tab>Cartão Escritório</Tab>
+              </TabList>
+              <TabPanel>
+                <div className="cardImg">
+                  <div className="cartaoficticio">
+                    <img src={Imglogo} className="logobranco" />
+                    <p className="textocartao">
+                      Nooma Design <br />
+                      ***** 0000 <br />
+                      00/00/0000
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="tab">
-                <table>
-                  <tr>
-                    <th className="tab-title">Data da transação</th>
-                    <th className="tab-title">Origem/Favorecido</th>
-                    <th className="tab-title">Tipo de Operação</th>
-                    <th className="tab-title">Valor</th>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                </table>
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="cardImg">
-                <div className="cartaoficticio">
-                  <img src={Imglogo} className="logobranco" />
-                  <p className="textocartao">
-                    Nooma Design <br />
-                    ***** 0000 <br />
-                    00/00/0000
-                  </p>
+                <div className="tab">
+                  <table>
+                    <tr>
+                      <th className="tab-title">Data da transação</th>
+                      <th className="tab-title">Origem/Favorecido</th>
+                      <th className="tab-title">Tipo de Operação</th>
+                      <th className="tab-title">Valor</th>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                  </table>
                 </div>
-              </div>
-              <div className="tab">
-                <table>
-                  <tr>
-                    <th className="tab-title">Data da transação</th>
-                    <th className="tab-title">Origem/Favorecido</th>
-                    <th className="tab-title">Tipo de Operação</th>
-                    <th className="tab-title">Valor</th>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">11/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 2.000,00</td>
-                  </tr>
-                </table>
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="cardImg">
-                <div className="cartaoficticio">
-                  <img src={Imglogo} className="logobranco" />
-                  <p className="textocartao">
-                    Nooma Design <br />
-                    ***** 0000 <br />
-                    00/00/0000
-                  </p>
+              </TabPanel>
+              <TabPanel>
+                <div className="cardImg">
+                  <div className="cartaoficticio">
+                    <img src={Imglogo} className="logobranco" />
+                    <p className="textocartao">
+                      Nooma Design <br />
+                      ***** 0000 <br />
+                      00/00/0000
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="tab">
-                <table>
-                  <tr>
-                    <th className="tab-title">Data da transação</th>
-                    <th className="tab-title">Origem/Favorecido</th>
-                    <th className="tab-title">Tipo de Operação</th>
-                    <th className="tab-title">Valor</th>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">12/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 3.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">12/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 3.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">12/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 3.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">12/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 3.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">12/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 3.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">12/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 3.000,00</td>
-                  </tr>
-                </table>
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="cardImg">
-                <div className="cartaoficticio">
-                  <img src={Imglogo} className="logobranco" />
-                  <p className="textocartao">
-                    Nooma Design <br />
-                    ***** 0000 <br />
-                    00/00/0000
-                  </p>
+                <div className="tab">
+                  <table>
+                    <tr>
+                      <th className="tab-title">Data da transação</th>
+                      <th className="tab-title">Origem/Favorecido</th>
+                      <th className="tab-title">Tipo de Operação</th>
+                      <th className="tab-title">Valor</th>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">11/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 2.000,00</td>
+                    </tr>
+                  </table>
                 </div>
-              </div>
-              <div className="tab">
-                <table>
-                  <tr>
-                    <th className="tab-title">Data da transação</th>
-                    <th className="tab-title">Origem/Favorecido</th>
-                    <th className="tab-title">Tipo de Operação</th>
-                    <th className="tab-title">Valor</th>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">13/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 4.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">13/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 4.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">13/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 4.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">13/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 4.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">13/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 4.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">13/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 4.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">13/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 4.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">13/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 4.000,00</td>
-                  </tr>
-                </table>
-              </div>
-            </TabPanel>
-            <TabPanel>
-              <div className="cardImg">
-                <div className="cartaoficticio">
-                  <img src={Imglogo} className="logobranco" />
-                  <p className="textocartao">
-                    Nooma Design <br />
-                    ***** 0000 <br />
-                    00/00/0000
-                  </p>
+              </TabPanel>
+              <TabPanel>
+                <div className="cardImg">
+                  <div className="cartaoficticio">
+                    <img src={Imglogo} className="logobranco" />
+                    <p className="textocartao">
+                      Nooma Design <br />
+                      ***** 0000 <br />
+                      00/00/0000
+                    </p>
+                  </div>
                 </div>
-              </div>
-              <div className="tab">
-                <table>
-                  <tr>
-                    <th className="tab-title">Data da transação</th>
-                    <th className="tab-title">Origem/Favorecido</th>
-                    <th className="tab-title">Tipo de Operação</th>
-                    <th className="tab-title">Valor</th>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="tab-title">14/08/2020</td>
-                    <td className="tab-title">Mercado Pago</td>
-                    <td className="tab-title">Débito</td>
-                    <td className="tab-title">R$ 6.000,00</td>
-                  </tr>
-                </table>
-              </div>
-            </TabPanel>
-          </Tabs>
+                <div className="tab">
+                  <table>
+                    <tr>
+                      <th className="tab-title">Data da transação</th>
+                      <th className="tab-title">Origem/Favorecido</th>
+                      <th className="tab-title">Tipo de Operação</th>
+                      <th className="tab-title">Valor</th>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">12/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 3.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">12/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 3.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">12/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 3.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">12/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 3.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">12/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 3.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">12/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 3.000,00</td>
+                    </tr>
+                  </table>
+                </div>
+              </TabPanel>
+              <TabPanel>
+                <div className="cardImg">
+                  <div className="cartaoficticio">
+                    <img src={Imglogo} className="logobranco" />
+                    <p className="textocartao">
+                      Nooma Design <br />
+                      ***** 0000 <br />
+                      00/00/0000
+                    </p>
+                  </div>
+                </div>
+                <div className="tab">
+                  <table>
+                    <tr>
+                      <th className="tab-title">Data da transação</th>
+                      <th className="tab-title">Origem/Favorecido</th>
+                      <th className="tab-title">Tipo de Operação</th>
+                      <th className="tab-title">Valor</th>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">13/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 4.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">13/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 4.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">13/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 4.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">13/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 4.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">13/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 4.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">13/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 4.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">13/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 4.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">13/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 4.000,00</td>
+                    </tr>
+                  </table>
+                </div>
+              </TabPanel>
+              <TabPanel>
+                <div className="cardImg">
+                  <div className="cartaoficticio">
+                    <img src={Imglogo} className="logobranco" />
+                    <p className="textocartao">
+                      Nooma Design <br />
+                      ***** 0000 <br />
+                      00/00/0000
+                    </p>
+                  </div>
+                </div>
+                <div className="tab">
+                  <table>
+                    <tr>
+                      <th className="tab-title">Data da transação</th>
+                      <th className="tab-title">Origem/Favorecido</th>
+                      <th className="tab-title">Tipo de Operação</th>
+                      <th className="tab-title">Valor</th>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                    <tr>
+                      <td className="tab-title">14/08/2020</td>
+                      <td className="tab-title">Mercado Pago</td>
+                      <td className="tab-title">Débito</td>
+                      <td className="tab-title">R$ 6.000,00</td>
+                    </tr>
+                  </table>
+                </div>
+              </TabPanel>
+            </Tabs>
+          ))}
         </TabPanel>
-
       </Tabs>
     </div>
   );
