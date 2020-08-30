@@ -35,16 +35,8 @@ function Cards() {
           {infos.map((info) => (
             <Tabs forceRenderTabPanel>
               <TabList id="listandocartoes">
-                <Tab>Cartão Anúncio</Tab>
-                <Tab>Cartão Fornecedor</Tab>
-                <Tab>Cartão Escritório</Tab>
-                <Tab>Cartão Afiliados</Tab>
-                <Tab>Cartão Dropshipping</Tab>
-                <Tab>Cartão Escritório</Tab>
-                <Tab>Cartão Escritório</Tab>
-                <Tab>Cartão Afiliados</Tab>
-                <Tab>Cartão Dropshipping</Tab>
-                <Tab>Cartão Escritório</Tab>
+                <Tab>{info.cardName}</Tab>
+
               </TabList>
               <TabPanel>
                 <div className="cardImg">
@@ -52,8 +44,8 @@ function Cards() {
                     <img src={Imglogo} className="logobranco" />
                     <p className="textocartao">
                       Nooma Design <br />
-                      ***** 0000 <br />
-                      00/00/0000
+                      {info.cardNumber} <br />
+                      {info.cardExpire}
                     </p>
                   </div>
                 </div>
