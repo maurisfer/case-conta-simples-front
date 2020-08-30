@@ -18,22 +18,30 @@ function Cards() {
 
   useEffect(() => {
     async function loadInfos() {
+<<<<<<< HEAD
       const { account_id } = await localStorage.getItem('@conta-simples/id');
       const response = await api.get('/card', account_id);
       setInfos(response.data);
+=======
+      const response = await api.get('');
+      console.log(response.data);
+      setInfos([response.data]);
+
+>>>>>>> 5468737fdf3b34660d402a559553517ac09ae903
     }
     loadInfos();
   }, []);
 
   return (
     <div className="card">
-      <Tabs forceRenderTabPanel defaultIndex={0}>
+      {infos.map((info) => (
+      <Tabs forceRenderTabPanel defaultIndex={0} key={info._id}>
         <TabList>
           <Tab style={styles}>Cartões</Tab>
         </TabList>
         <TabPanel>
-          {infos.map((info) => (
-            <Tabs forceRenderTabPanel>
+
+            <Tabs forceRenderTabPanel >
               <TabList id="listandocartoes">
                 <Tab> Cartão {info.cardName}</Tab>
 
@@ -375,9 +383,10 @@ function Cards() {
                 </div>
               </TabPanel>
             </Tabs>
-          ))}
+
         </TabPanel>
       </Tabs>
+      ))}
     </div>
   );
 }
