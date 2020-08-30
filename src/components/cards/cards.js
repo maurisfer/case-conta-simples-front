@@ -13,6 +13,7 @@ const styles = {
 }
 
 function Cards() {
+  const token =
   return (
     <div className="card">
       <Tabs forceRenderTabPanel defaultIndex={0}>
