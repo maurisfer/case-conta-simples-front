@@ -10,7 +10,7 @@ function Login() {
   const token = localStorage.getItem('@conta-simples/token');
 
   if (token) {
-    window.location.href = '/home';
+    window.location.href = `/home`;
   }
 
   const [infos, setInfos] = useState({
@@ -22,13 +22,15 @@ function Login() {
     e.preventDefault();
 
     const { enterpriseID, password } = infos;
+    console.log(infos);
 
     const infosToApi = {
       enterpriseID,
       password,
     };
+    console.log(infosToApi);
 
-    const response = await api.get('/login', infosToApi);
+    const response = await api.post('/login', infosToApi);
     console.log(response);
 
     if (response.status !== 200) {
@@ -37,10 +39,12 @@ function Login() {
     }
 
     localStorage.setItem('@conta-simples/token', response.data.token);
+    localStorage.setItem('@conta-simples/accountid', response.data.id);
+    const accId = localStorage.getItem('@conta-simples/accountid');
 
     alert('Usuário autenticado com sucesso');
 
-    window.location.href = '/home';
+    window.location.href = `/home/${accId}`;
   };
 
   const handleInputChanges = async (e) => {
@@ -51,7 +55,6 @@ function Login() {
   };
 
   return (
-    // eslint-disable-next-line react/jsx-filename-extension
     <div className="Login">
       <>
         <GlobalStyle />
@@ -68,7 +71,7 @@ function Login() {
               <h4>Preencha os campos abaixo para fazer login </h4>
             </div>
             <form onSubmit={onFormSubmit}>
-              <label htmlFor="cnpj" className="labellogin">
+              <label htmlFor="enterpriseID" className="labellogin">
                 {' '}
                 CNPJ: <br />
                 <MaskedInput
@@ -94,8 +97,8 @@ function Login() {
                   ]}
                   placeholder="Insira seu CNPJ"
                   type="text"
-                  id="cnpj"
-                  name="cnpj"
+                  id="enterpriseID"
+                  name="enterpriseID"
                   onChange={handleInputChanges}
                 />
               </label>
