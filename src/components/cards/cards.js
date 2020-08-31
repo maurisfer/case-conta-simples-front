@@ -32,13 +32,13 @@ function Cards() {
     }
     loadInfos();
   }, []);
-  useEffect(() => {
+  /* useEffect(() => {
     async function loadAccId() {
       const accId = localStorage.getItem('@conta-simples/accountid');
       setInfoId({ account_id: accId.toString() });
     }
     loadAccId();
-  }, []);
+  }, []); */
 
 
   return (
@@ -48,22 +48,29 @@ function Cards() {
         <TabList>
           <Tab style={styles}>Cartões</Tab>
         </TabList>
-          {infos.map((info) => (
-          <TabPanel key={info._id}>
+          <TabPanel >
             <Tabs forceRenderTabPanel >
-              <TabList id="listandocartoes">
-                <Tab> Cartão {info.cardName}</Tab>
-              </TabList>
+              <div> {/* Lista de cartões */}
+                <TabList id="listandocartoes">
+                  <Tab> Cartão </Tab>
+                </TabList>
+              </div>
               <TabPanel>
                 <div className="cardImg">
-                  <div className="cartaoficticio">
-                    <img src={Imglogo} className="logobranco" />
-                    <p className="textocartao"> Nooma Design</p><br /> {/* Vai puxar do accountModel */}
-                    <p className="textocartao">{info.cardNumber}</p> <br />
-                    <p className="textocartao">{info.cardExpire}</p>
+                    <div className="cartaoficticio">
+                      <img src={Imglogo} className="logobranco" />
+                    <div> {/* Nome da empresa / Vai puxar do accountModel */}
+                      <p className="textocartao "> Nooma Design</p><br />
+                    </div>
+                    <br/>
+                    <div>
+                      <p className="textocartao numero">**** **** **** 4444</p> {/* Número do cartão / Vai puxar do cardModel */}
+                      <p className="textocartao validade">09/2020</p> {/* Validade / Vai puxar do cardModel */}
+                    </div>
+
                   </div>
                 </div>
-                <div className="tab">
+                <div className="tab"> {/* Transações / Vai puxar do transictionModel */}
                   <table>
                     <tr>
                       <th className="tab-title">Data da transação</th>
@@ -113,7 +120,6 @@ function Cards() {
             </Tabs>
 
         </TabPanel>
-        ))}
       </Tabs>
 
     </div>

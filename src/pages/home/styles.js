@@ -561,6 +561,7 @@ div#ultimastransacoes{
   background-color: #45B54A;
   width: 220px;
   height: 129px;
+  z-index: 1;
 
 }
 

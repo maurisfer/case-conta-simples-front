@@ -34,6 +34,8 @@
 img.logobranco{
     float: left;
 }
+
+
 p.textocartao{
   width: 103px;
   height: 73px;
@@ -50,6 +52,18 @@ p.textocartao{
   text-align: start;
 
 }
+
+/* Fiz as modificações abaixo, pois após a inclusão da div ficou tudo desalinnhado. */
+p.numero {
+  padding-top: 60px;
+  margin-left: -100px;
+  width: 200px;
+}
+
+p.validade {
+  margin-left: -25px;
+}
+
 
 table{
   background: #FDFDFD;
