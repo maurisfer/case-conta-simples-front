@@ -1,13 +1,62 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container } from './styles';
 import ImgCriar from '../../assets/images/imagemcriarconta.svg';
 import Img from '../../assets/images/logo 01 mobile.svg';
 import GlobalStyle from '../../assets/styles/global';
 
-import MaskedInput from 'react-text-mask'
+import MaskedInput from 'react-text-mask';
+
+import api from '../../services/api';
 
 
 function Criarconta() {
+  //const token = localStorage.getItem('');
+
+  //if (!token) {
+  //  window.location.href = '/login';
+  //}
+
+  const [infos, setInfos] = useState({
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
+  });
+
+  const onFormSubmit = async (e) => {
+    e.preventDefault();
+    const { enterpriseName, enterpriseID, email, password, confirmPassword } = infos;
+
+    if (password !== confirmPassword) {
+      return alert('As senhas digitadas não conferem');
+    }
+
+    const infosToApi = {
+      enterpriseName,
+      enterpriseID,
+      email,
+      password,
+    };
+
+    const response = await api.post('/account', infosToApi);
+    console.log(response);
+
+    if (response.status !== 201) {
+      console.log(response);
+      return alert('Houve um erro ao criado o usuário');
+    }
+
+    alert('Usuário criado com sucesso');
+
+    window.location.href = '/'; // redireciona a página para /
+  };
+
+  const handleInputChange = (e) => {
+    setInfos({
+      ...infos,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div className="Login">
       <>
@@ -24,7 +73,7 @@ function Criarconta() {
               <img id="imglogo" src={Img} alt="Logo da conta simples" />
               <h4>Preencha os campos abaixo para criar sua conta </h4>
             </div>
-            <form>
+            <form onSubmit={onFormSubmit}>
             <label htmlFor="nomedaempresa" className="labellogin" name="enterpriseName">
                 {' '}
                 Nome da empresa: <br />{' '}
@@ -33,13 +82,21 @@ function Criarconta() {
                   placeholder="Insira o nome da sua empresa"
                   type="text"
                   id="nomedaempresa"
+                  name="enterpriseName"
+                  onChange={handleInputChange}
                 />
               </label>
 
               <label htmlFor="cnpj" className="labellogin" name="enterpriseID">
                 {' '}
                 CNPJ: <br />
-                <MaskedInput mask={[/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', '0', '0', '0', /\d/, '-', /\d/, /\d/]} placeholder="Insira o CNPJ da empresa" type="text" id="cnpj" />
+                <MaskedInput mask={[/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', '0', '0', '0', /\d/, '-', /\d/, /\d/]}
+                placeholder="Insira o CNPJ da empresa"
+                type="text"
+                id="cnpj"
+                name="enterpriseID"
+                onChange={handleInputChange}
+                />
               </label>
 
               <label htmlFor="emailempresa" className="labellogin" name="email">
@@ -50,6 +107,8 @@ function Criarconta() {
                   placeholder="Insira o e-mail da sua empresa"
                   type="email"
                   id="emailempresa"
+                  onChange={handleInputChange}
+                  name="email"
                 />
               </label>
 
@@ -61,6 +120,8 @@ function Criarconta() {
                   placeholder="Insira sua senha"
                   type="password"
                   id="senha"
+                  name="password"
+                  onChange={handleInputChange}
                 />
               </label>
 
@@ -72,6 +133,8 @@ function Criarconta() {
                   placeholder="Confirme a senha"
                   type="password"
                   id="confirmesenha"
+                  onChange={handleInputChange}
+                  name="confirmPassword"
                 />
               </label>
 
