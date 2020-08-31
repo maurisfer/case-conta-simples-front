@@ -35,7 +35,6 @@ function Criarcartao() {
       cardName,
       password,
     };
-    console.log(infosToApi);
 
     const response = await api.post('/card', infosToApi);
 

@@ -48,12 +48,11 @@ function Cards() {
         <TabList>
           <Tab style={styles}>Cartões</Tab>
         </TabList>
-        {infos.map((info) => (
-        <TabPanel key={info._id}>
+          {infos.map((info) => (
+          <TabPanel key={info._id}>
             <Tabs forceRenderTabPanel >
               <TabList id="listandocartoes">
                 <Tab> Cartão {info.cardName}</Tab>
-
               </TabList>
               <TabPanel>
                 <div className="cardImg">

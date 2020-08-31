@@ -22,19 +22,19 @@ function Login() {
     e.preventDefault();
 
     const { enterpriseID, password } = infos;
-    console.log(infos);
+
 
     const infosToApi = {
       enterpriseID,
       password,
     };
-    console.log(infosToApi);
+
 
     const response = await api.post('/login', infosToApi);
-    console.log(response);
+
 
     if (response.status !== 200) {
-      console.log(response);
+
       return alert('Houve um erro no login');
     }
 

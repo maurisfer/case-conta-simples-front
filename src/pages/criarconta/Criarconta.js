@@ -39,10 +39,8 @@ function Criarconta() {
     };
 
     const response = await api.post('/account', infosToApi);
-    console.log(response);
 
     if (response.status !== 201) {
-      console.log(response);
       return alert('Houve um erro ao criado o usuário');
     }
 
@@ -68,12 +66,15 @@ function Criarconta() {
             src={ImgCriar}
             alt="Ilustração de mulher com cartão"
           />
+
           <div id="loginform">
             <div id='tituloform'>
               <img id="imglogo" src={Img} alt="Logo da conta simples" />
               <h4>Preencha os campos abaixo para criar sua conta </h4>
             </div>
+
             <form onSubmit={onFormSubmit}>
+
             <label htmlFor="nomedaempresa" className="labellogin" name="enterpriseName">
                 {' '}
                 Nome da empresa: <br />{' '}
