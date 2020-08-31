@@ -14,21 +14,34 @@ const styles = {
 };
 
 function Cards() {
-<<<<<<< HEAD
+
+  const [infoId, setInfoId] = useState({
+    account_id: '',
+  });
   const [infos, setInfos] = useState({});
 
-  useEffect(() => {
-    async function loadInfos() {
-      const { account_id } = await localStorage.getItem('@conta-simples/id');
-      const response = await api.get('/card', account_id);
-      setInfos(response.data);
-    }
-    loadInfos();
-  }, []);
+  const onNameClick = async (e) => {
+    e.preventDefault();
 
-=======
-  const token =
->>>>>>> conexao-api
+    useEffect(() => {
+      async function loadInfos() {
+        const {account_id} = infoId;
+        const response = await api.get('/card', account_id);
+        setInfos([response.data]);
+      }
+      loadInfos();
+    }, []);
+    useEffect(() => {
+      async function loadAccId() {
+        const accId = localStorage.getItem('@conta-simples/accountid');
+        setInfoId({ account_id: accId.toString() });
+      }
+      loadAccId();
+    }, []);
+
+  };
+
+
   return (
     <div className="card">
       {infos.map((info) => (
@@ -37,7 +50,6 @@ function Cards() {
           <Tab style={styles}>Cartões</Tab>
         </TabList>
         <TabPanel>
-
             <Tabs forceRenderTabPanel >
               <TabList id="listandocartoes">
                 <Tab> Cartão {info.cardName}</Tab>
@@ -386,6 +398,7 @@ function Cards() {
       ))}
     </div>
   );
+}
 }
 
 export default Cards;
