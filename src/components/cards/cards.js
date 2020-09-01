@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-filename-extension */
 import React, { useState, useEffect } from 'react';
-import './cards.css';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import './cards.css';
 import './tab.css';
 import Imglogo from '../../assets/images/logobranco.svg';
 import api from '../../services/api';
@@ -15,116 +15,101 @@ const styles = {
 
 function Cards() {
 
-  const [infoId, setInfoId] = useState({
-    account_id: '',
-  });
-  const [infos, setInfos] = useState({});
-
-  const onNameClick = async (e) => {
-    e.preventDefault();
-  };
+  const [infos, setInfos] = useState([]);
+  console.log(infos)
 
   useEffect(() => {
     async function loadInfos() {
-      const {account_id} = infoId;
-      const response = await api.get('/card', account_id);
-      setInfos([response.data]);
+      try {
+        const account_id = localStorage.getItem('@conta-simples/accountid');
+        const response = await api.get(`/card/${account_id}`);
+        console.log(Array.isArray(response.data.findCard));
+        setInfos(response.data.findCard);
+      } catch (e) {
+        console.log(e);
+      }
     }
     loadInfos();
   }, []);
-  /* useEffect(() => {
-    async function loadAccId() {
-      const accId = localStorage.getItem('@conta-simples/accountid');
-      setInfoId({ account_id: accId.toString() });
-    }
-    loadAccId();
-  }, []); */
 
+
+  const handleClick = async (e) => {
+    const card_id = e.target.key;
+    const response = await api.get(`/transactions/${card_id}`);
+    response.data.CardTransactions.map((infoOps) => {
+      document.getElementById('transactions').innerHTML =
+      `<tr>
+        <td className="tab-title">${infoOps.date}</td>
+        <td className="tab-title">${infoOps.operatorName}</td>
+        <td className="tab-title">${infoOps.operationId}</td>
+        <td className="tab-title"> R$ ${infoOps.value}</td>
+      </tr>`
+    };
+  });
 
   return (
     <div className="card">
-
-      <Tabs forceRenderTabPanel defaultIndex={0} >
-        <TabList>
-          <Tab style={styles}>Cartões</Tab>
-        </TabList>
-          <TabPanel >
-            <Tabs forceRenderTabPanel >
-              <div> {/* Lista de cartões */}
-                <TabList id="listandocartoes">
-                  <Tab> Cartão </Tab>
-                </TabList>
+      <Tabs forceRenderTabPanel defaultIndex={0}>
+        <div>
+          <TabList>
+            <Tab style={styles}>Cartões</Tab>
+          </TabList>
+        </div>
+        <TabPanel>
+          <Tabs forceRenderTabPanel>
+            <>
+              <div>
+                {infos.map((info) => (
+                  <TabList id="listandocartoes" key={info._id} onClick={handleClick}>
+                    <Tab> Cartão {info.cardName} </Tab>
+                  </TabList>
+                ))}
+                ;
               </div>
-              <TabPanel>
-                <div className="cardImg">
+            </>
+            <TabPanel>
+              <div className="cardImg">
+                <>
+                  {infos.map((info) => (
                     <div className="cartaoficticio">
-                      <img src={Imglogo} className="logobranco" />
-                    <div> {/* Nome da empresa / Vai puxar do accountModel */}
-                      <p className="textocartao "> Nooma Design</p><br />
+                      <img src={Imglogo} className="logobranco" alt="cartão" />
+                      <div>
+                        <p className="textocartao "> {info.cardName}</p>
+                      </div>
+                      <div>
+                        <p className="textocartao numero">
+                          **** **** **** {info.cardNumber}
+                        </p>
+                        <p className="textocartao validade">
+                          {info.cardExpire}
+                        </p>
+                      </div>
                     </div>
-                    <br/>
-                    <div>
-                      <p className="textocartao numero">**** **** **** 4444</p> {/* Número do cartão / Vai puxar do cardModel */}
-                      <p className="textocartao validade">09/2020</p> {/* Validade / Vai puxar do cardModel */}
-                    </div>
-
+                  ))}
+                  ;
+                </>
+              </div>
+              <>
+                <div>
+                  <div className="tab" id="all-transaxtio">
+                    <table>
+                      <tr>
+                        <th className = "tab-title"> Data da Transação</th>
+                        <th className = "tab-title"> Origem/ Favorecido</th>
+                        <th className = "tab-title"> Tipo de Operação</th>
+                        <th className = "tab-title"> Valor</th>
+                      </tr>
+                      <div id='transactions'></div>
+                    </table>
                   </div>
                 </div>
-                <div className="tab"> {/* Transações / Vai puxar do transictionModel */}
-                  <table>
-                    <tr>
-                      <th className="tab-title">Data da transação</th>
-                      <th className="tab-title">Origem/Favorecido</th>
-                      <th className="tab-title">Tipo de Operação</th>
-                      <th className="tab-title">Valor</th>
-                    </tr>
-                    <tr>
-                      <td className="tab-title">11/08/2020</td>
-                      <td className="tab-title">Mercado Pago</td>
-                      <td className="tab-title">Débito</td>
-                      <td className="tab-title">R$ 2.000,00</td>
-                    </tr>
-                    <tr>
-                      <td className="tab-title">11/08/2020</td>
-                      <td className="tab-title">Mercado Pago</td>
-                      <td className="tab-title">Débito</td>
-                      <td className="tab-title">R$ 2.000,00</td>
-                    </tr>
-                    <tr>
-                      <td className="tab-title">11/08/2020</td>
-                      <td className="tab-title">Mercado Pago</td>
-                      <td className="tab-title">Débito</td>
-                      <td className="tab-title">R$ 2.000,00</td>
-                    </tr>
-                    <tr>
-                      <td className="tab-title">11/08/2020</td>
-                      <td className="tab-title">Mercado Pago</td>
-                      <td className="tab-title">Débito</td>
-                      <td className="tab-title">R$ 2.000,00</td>
-                    </tr>
-                    <tr>
-                      <td className="tab-title">11/08/2020</td>
-                      <td className="tab-title">Mercado Pago</td>
-                      <td className="tab-title">Débito</td>
-                      <td className="tab-title">R$ 2.000,00</td>
-                    </tr>
-                    <tr>
-                      <td className="tab-title">11/08/2020</td>
-                      <td className="tab-title">Mercado Pago</td>
-                      <td className="tab-title">Débito</td>
-                      <td className="tab-title">R$ 2.000,00</td>
-                    </tr>
-                  </table>
-                </div>
-              </TabPanel>
-            </Tabs>
-
+              </>
+            </TabPanel>
+          </Tabs>
         </TabPanel>
       </Tabs>
-
     </div>
   );
 }
-
 
 export default Cards;

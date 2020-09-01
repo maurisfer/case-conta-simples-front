@@ -10,11 +10,6 @@ import api from '../../services/api';
 
 
 function Criarconta() {
-  //const token = localStorage.getItem('');
-
-  //if (!token) {
-  //  window.location.href = '/login';
-  //}
 
   const [infos, setInfos] = useState({
     name: '',
@@ -25,7 +20,14 @@ function Criarconta() {
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
-    const { enterpriseName, enterpriseID, email, password, confirmPassword } = infos;
+
+    const {
+      enterpriseName,
+      enterpriseID,
+      email,
+      password,
+      confirmPassword,
+    } = infos;
 
     if (password !== confirmPassword) {
       return alert('As senhas digitadas não conferem');
@@ -41,12 +43,12 @@ function Criarconta() {
     const response = await api.post('/account', infosToApi);
 
     if (response.status !== 201) {
-      return alert('Houve um erro ao criado o usuário');
+      return alert('Houve um erro ao criar o usuário');
     }
 
     alert('Usuário criado com sucesso');
 
-    window.location.href = '/'; // redireciona a página para /
+    window.location.href = '/login'; // redireciona a página para /
   };
 
   const handleInputChange = (e) => {
@@ -55,6 +57,7 @@ function Criarconta() {
       [e.target.name]: e.target.value,
     });
   };
+
   return (
     <div className="Login">
       <>
@@ -91,7 +94,7 @@ function Criarconta() {
               <label htmlFor="cnpj" className="labellogin" name="enterpriseID">
                 {' '}
                 CNPJ: <br />
-                <MaskedInput mask={[/[1-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', '0', '0', '0', /\d/, '-', /\d/, /\d/]}
+                <MaskedInput mask={[/[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, '0', /\d/, '-', /\d/, /\d/]}
                 placeholder="Insira o CNPJ da empresa"
                 type="text"
                 id="cnpj"
