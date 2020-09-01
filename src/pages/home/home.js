@@ -26,8 +26,12 @@ import IconeTarifas from '../../assets/images/iconesul/iconetarifas.svg';
 import IconeFaleConosco from '../../assets/images/iconesul/iconefaleconosco.svg';
 import IconeBeneficios from '../../assets/images/iconesul/iconebenefícios.svg';
 
-import Chart from '../../components/chart/chart';
+import api from '../../services/api';
+
 import Cards from '../../components/cards/cards';
+
+import { Line, defaults } from 'react-chartjs-2';
+import './chart.css';
 
 const Saldo = (props) => {
   const [checked, setChecked] = useState(false);
@@ -46,6 +50,91 @@ const Saldo = (props) => {
     </div>
   );
 };
+
+const options = {
+  layout: {
+    padding: {
+      left: 0,
+      right: 0,
+      top: 10,
+      bottom: 0,
+    },
+  },
+  elements: {
+    point: {
+      radius: 0,
+    },
+  },
+  legend: { display: false },
+  responsive: true,
+  scales: {
+    yAxes: [
+      {
+        ticks: {
+          autoskip: true,
+          maxTicksLimit: 10,
+          beginAtZero: true,
+          display: false,
+        },
+        gridLines: {
+          display: false,
+        },
+      },
+    ],
+    xAxes: [
+      {
+        maxBarThicness: 500,
+        gridLines: {
+          display: false,
+        },
+      },
+    ],
+  },
+};
+
+const Chart = (cred, deb) => {
+  const [chartData, setChartData] = useState({});
+  console.log(cred, deb);
+  setChartData({
+    labels: [
+      'Jan',
+      'Fev',
+      'Mar',
+      'Abr',
+      'Mai',
+      'Jun',
+      'Jul',
+      'Ago',
+      'Set',
+      'Nov',
+      'Dez',
+    ],
+    datasets: [
+      {
+        label: 'Entradas',
+        data: cred,
+        backgroundColor: ['rgba(0, 190, 62, 0.2)'],
+        borderColor: ['rgba(0, 190, 62, 0.4)'],
+        borderWidth: 3,
+      },
+      {
+        label: 'Saida',
+        data: deb,
+        backgroundColor: ['rgba(412, 90, 62, 0.2)'],
+        borderColor: ['rgba(412, 90, 62, 0.4)'],
+        borderWidth: 3,
+      },
+    ],
+  });
+};
+
+const Grafico = async () => {
+      const responsecd = await api.get('transactions/cre'); // Retorna um array
+      const responsedb = await api.get('transactions/deb');
+
+      return Chart(responsecd.data, responsedb.data)
+
+}
 
 function Home() {
   const accountId = localStorage.getItem('@conta-simples/accountid');
@@ -205,7 +294,9 @@ function Home() {
           </section>
           <div id="chart">
             <h3>Entrada vs saída</h3>
-            <Chart />
+            <div className = 'canvas-container'>
+              <Line data = {Grafico} options = {options}/>
+            </div>
           </div>
           <div id="cardsdiv">
             <Cards />

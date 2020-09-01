@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Line, defaults } from 'react-chartjs-2';
-import './chart.css';
 import api from '../../services/api';
 
 defaults.global.maintainAspectRatio = false;
