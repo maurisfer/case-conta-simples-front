@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from './styles';
 import GlobalStyle from '../../assets/styles/global';
-import Imagemcartao from '../../assets/images/cadastrarcartao.svg'
+import Imagemcartao from '../../assets/images/cadastrarcartao.svg';
 import Img from '../../assets/images/logo 01 mobile.svg';
 import api from '../../services/api';
 
 function Criarcartao() {
+
   const token = localStorage.getItem('@conta-simples/token');
 
   if (!token) {
     window.location.href = `/login`;
-  };
+  }
 
   const [infoId, setInfoId] = useState({
     account_id: '',
@@ -37,8 +38,11 @@ function Criarcartao() {
     };
 
     const response = await api.post('/card', infosToApi);
+    console.log(response);
 
-    localStorage.setItem('@conta-simples/cardid', response.data.id);
+    if (response) {
+      alert('Cartão criado com sucesso');
+    }
 
     window.location.href = `/home`;
   };
@@ -60,7 +64,7 @@ function Criarcartao() {
 
   return (
     // eslint-disable-next-line react/jsx-filename-extension
-    <div className="Criarcartao" >
+    <div className="Criarcartao">
       <>
         <GlobalStyle />
         <Container>

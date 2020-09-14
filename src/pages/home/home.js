@@ -1,8 +1,9 @@
 /* eslint-disable react/button-has-type */
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Link } from 'react-router-dom';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { Line, defaults } from 'react-chartjs-2';
 import GlobalStyle from '../../assets/styles/global';
-
 import { Container } from './styles';
 import { Headerdiv } from '../../assets/styles/headerdiv';
 import { GreenButton } from '../../assets/styles/greenbutton';
@@ -26,18 +27,21 @@ import IconeTarifas from '../../assets/images/iconesul/iconetarifas.svg';
 import IconeFaleConosco from '../../assets/images/iconesul/iconefaleconosco.svg';
 import IconeBeneficios from '../../assets/images/iconesul/iconebenefícios.svg';
 
+import './cards.css';
+import './tab.css';
+import './chart.css';
+import ImglogoCard from '../../assets/images/logobranco.svg';
+
 import api from '../../services/api';
 
-import Cards from '../../components/cards/cards';
-
-import { Line, defaults } from 'react-chartjs-2';
-import './chart.css';
+defaults.global.maintainAspectRatio = false;
 
 const Saldo = (props) => {
   const [checked, setChecked] = useState(false);
   const style = checked ? 'mostrarsaldo' : 'mostrarsaldo nao-mostrarsaldo';
   const vizualizacao = checked ? Olhoaceso : Olhoapagado;
   return (
+    // eslint-disable-next-line react/jsx-filename-extension
     <div id="saldoconta" className={style}>
       <h4>Saldo da Conta</h4>
       <button onClick={() => setChecked(!checked)}>
@@ -51,93 +55,184 @@ const Saldo = (props) => {
   );
 };
 
-const options = {
-  layout: {
-    padding: {
-      left: 0,
-      right: 0,
-      top: 10,
-      bottom: 0,
-    },
-  },
-  elements: {
-    point: {
-      radius: 0,
-    },
-  },
-  legend: { display: false },
-  responsive: true,
-  scales: {
-    yAxes: [
-      {
-        ticks: {
-          autoskip: true,
-          maxTicksLimit: 10,
-          beginAtZero: true,
-          display: false,
-        },
-        gridLines: {
-          display: false,
-        },
-      },
-    ],
-    xAxes: [
-      {
-        maxBarThicness: 500,
-        gridLines: {
-          display: false,
-        },
-      },
-    ],
-  },
-};
+function Home() {
+  const token = localStorage.getItem('@conta-simples/token');
+  const accountId = localStorage.getItem('@conta-simples/accountid');
 
-const Chart = (cred, deb) => {
-  const [chartData, setChartData] = useState({});
-  console.log(cred, deb);
-  setChartData({
-    labels: [
-      'Jan',
-      'Fev',
-      'Mar',
-      'Abr',
-      'Mai',
-      'Jun',
-      'Jul',
-      'Ago',
-      'Set',
-      'Nov',
-      'Dez',
-    ],
-    datasets: [
-      {
-        label: 'Entradas',
-        data: cred,
+  if (!token) {
+    window.location.href = '/login';
+  }
+
+  // useStates
+
+  const [infosHome, setInfosHome] = useState([]); // Informação de conta
+  const [infosCard, setInfosCard] = useState([]); // Informações de cartão
+  const [infosOps, setInfosOps] = useState([]);
+
+  const [chartData, setChartData] = useState([]);
+  const [chartDataCredit, setChartDataCredit] = useState([]);
+  const [chartDataDebt, setChartDataDebt] = useState([]);
+
+  // useEffects
+
+  useEffect(() => {
+    async function loadInfos() {
+      try {
+        const accountIdInfo = localStorage.getItem('@conta-simples/accountid');
+        const response = await api.get(`/oneaccount/${accountIdInfo}`);
+        setInfosHome(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    loadInfos();
+  }, []); // Informações da conta
+
+  useEffect(() => {
+    async function loadInfos() {
+      try {
+        const accountIdCard = localStorage.getItem('@conta-simples/accountid');
+        const response = await api.get(`/allcard/${accountIdCard}`);
+        console.log(Array.isArray(response.data));
+        setInfosCard(response.data);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+    loadInfos();
+  }, []); // Informação do cartão
+
+  // Configs
+
+  const styles = {
+    fontWeight: 'bold',
+    backgroundColor: '#45B54A',
+    borderBottom: '1px solid #aaa',
+    width: '100%',
+  };
+
+  const options = {
+    layout: {
+      padding: {
+        left: 0,
+        right: 0,
+        top: 10,
+        bottom: 0,
+      },
+    },
+    elements: {
+      point: {
+        radius: 2,
         backgroundColor: ['rgba(0, 190, 62, 0.2)'],
         borderColor: ['rgba(0, 190, 62, 0.4)'],
-        borderWidth: 3,
       },
-      {
-        label: 'Saida',
-        data: deb,
-        backgroundColor: ['rgba(412, 90, 62, 0.2)'],
-        borderColor: ['rgba(412, 90, 62, 0.4)'],
-        borderWidth: 3,
-      },
-    ],
-  });
-};
+    },
+    legend: { display: false },
+    responsive: true,
+    scales: {
+      yAxes: [
+        {
+          ticks: {
+            autoskip: true,
+            maxTicksLimit: 10,
+            beginAtZero: true,
+            display: false,
+          },
+          gridLines: {
+            display: true,
+          },
+        },
+      ],
+      xAxes: [
+        {
+          maxBarThicness: 500,
+          gridLines: {
+            display: true,
+          },
+        },
+      ],
+    },
+  };
 
-const Grafico = async () => {
-      const responsecd = await api.get('transactions/cre'); // Retorna um array
-      const responsedb = await api.get('transactions/deb');
+  // Event Handlers
 
-      return Chart(responsecd.data, responsedb.data)
+  const handleLogoutClick = async (e) => {
+    async function Logout() {
+      localStorage.removeItem('@conta-simples/token');
+      localStorage.removeItem('@conta-simples/accountid');
+    }
+    Logout(e);
+  };
 
-}
+  // const getCardId = async (e) => {
+  //   const cardId = e.target.listId;
+  //   return cardId;
+  // };
 
-function Home() {
-  const accountId = localStorage.getItem('@conta-simples/accountid');
+  // const getIdOps = () => {
+  //   async function loadOps() {
+  //     const response = await api.get(`/transactions/${getCardId}`);
+  //     setInfosOps(response.data);
+  //   }
+  //   loadOps();
+  // };
+
+  // useEffect(() => {
+  //   getIdOps();
+  // }, [getIdOps]);
+
+  // Chart
+
+  const chart = useCallback(async () => {
+    setChartData({
+      labels: [
+        'Jan',
+        'Fev',
+        'Mar',
+        'Abr',
+        'Mai',
+        'Jun',
+        'Jul',
+        'Ago',
+        'Set',
+        'Nov',
+        'Dez',
+      ],
+      datasets: [
+        {
+          label: 'Entradas',
+          data: chartDataCredit,
+          backgroundColor: ['rgba(0, 190, 62, 0.2)'],
+          borderColor: ['rgba(0, 190, 62, 0.4)'],
+          borderWidth: 3,
+        },
+        {
+          label: 'Saida',
+          data: chartDataDebt,
+          backgroundColor: ['rgba(412, 90, 62, 0.2)'],
+          borderColor: ['rgba(412, 90, 62, 0.4)'],
+          borderWidth: 3,
+        },
+      ],
+    });
+  }, [chartDataCredit, chartDataDebt]);
+
+  const getData = useCallback(async () => {
+    const responsecd = await api.get('transactionscd'); // Retorna um array
+    const responsedb = await api.get('transactionsdb');
+    setChartDataDebt(responsedb.data);
+    setChartDataCredit(responsecd.data);
+  }, []);
+
+  useEffect(() => {
+    getData();
+  }, [getData]);
+
+  useEffect(() => {
+    chart();
+  }, [chart]);
+
+  /// ///////////////////////////
 
   return (
     <div className="Home">
@@ -252,8 +347,7 @@ function Home() {
                 <div id="logoenome">
                   <h3>
                     <img src={Logobranco} id="logobranco" alt="ff" />
-                    Bem-vindo à conta{' '}
-                    <strong>Fernando{/* Será trazido pelo backend */}</strong>
+                    Bem-vindo à conta <strong>Fernando</strong>
                   </h3>
                 </div>
                 <h5>Sessão ativa há 00:00</h5>
@@ -266,6 +360,9 @@ function Home() {
                 </GreenButton>
                 <GreenButton>
                   <a href="/">Trasferir</a>
+                </GreenButton>
+                <GreenButton onClick={handleLogoutClick}>
+                  <a href="/login">Sair</a>
                 </GreenButton>
               </div>
             </div>
@@ -283,32 +380,148 @@ function Home() {
 
             <div className="containfos">
               <div id="dadosconta">
-                <p>Nooma Design</p> {/* Será trazido pelo backend */}
-                <p>81.809.187/0001-70</p> {/* Será trazido pelo backend */}
-                <p>Banco Votorantim: 655</p>
-                <p>Agência: 1111</p>
-                <p>Conta: 62264022-7</p> {/* Será trazido pelo backend */}
+                {infosHome.map((infoHome) => (
+                  <>
+                    <p>
+                      <strong>{infoHome.enterpriseName}</strong>
+                    </p>
+                    <p>
+                      <strong>CNPJ:</strong> {infoHome.enterpriseID}{' '}
+                    </p>
+                    <p>
+                      <strong>Banco Votorantim:</strong> 655
+                    </p>
+                    <p>
+                      <strong>Agência:</strong> 1111
+                    </p>
+                    <p>
+                      <strong>Conta:</strong> {infoHome.accountNumber}
+                    </p>
+                  </>
+                ))}
+                <button id="compartilhardados">COMPARTILHAR</button>
               </div>
-              <button id="compartilhardados">COMPARTILHAR</button>
             </div>
           </section>
           <div id="chart">
             <h3>Entrada vs saída</h3>
-            <div className = 'canvas-container'>
-              <Line data = {Grafico} options = {options}/>
+            <div className="canvas-container">
+              <Line data={() => chartData} options={options} />
             </div>
           </div>
           <div id="cardsdiv">
-            <Cards />
+            <div className="card">
+              <Tabs forceRenderTabPanel defaultIndex={0}>
+                <div>
+                  <TabList>
+                    <Tab style={styles}>Cartões</Tab>
+                  </TabList>
+                </div>
+                <TabPanel>
+                  <Tabs forceRenderTabPanel>
+                    <div>
+                      <TabList id="listandocartoes">
+                        {infosCard.map((infoCard) => (
+                          <Tab
+                            name="cardlist"
+                            listId={infoCard._id}
+                            onClick={async () => {
+                              const response = await api.get(
+                                `/transactions/${infoCard._id}`
+                              );
+                              setInfosOps(response.data);
+                              console.log(response);
+                            }}
+                          >
+                            {/* <div id="cardid">{infoCard._id}</div> */}
+                            Cartão {infoCard.cardName}
+                          </Tab>
+                        ))}
+                      </TabList>
+                      <>
+                        {infosCard.map((infoCard) => (
+                          <TabPanel>
+                            <Tabs forceRenderTabPanel>
+                              <div className="cardImg">
+                                <div className="cartaoficticio">
+                                  <img
+                                    src={ImglogoCard}
+                                    className="logobranco"
+                                    alt="cartão"
+                                  />
+                                  <div>
+                                    <p className="textocartao ">
+                                      {' '}
+                                      {infoCard.cardName}
+                                    </p>
+                                  </div>
+                                  <div>
+                                    <p className="textocartao numero">
+                                      **** **** **** {infoCard.cardNumber}
+                                    </p>
+                                    <p className="textocartao validade">
+                                      {infoCard.cardExpire}
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </Tabs>
+                            <>
+                              <div>
+                                <div className="tab" id="all-transaction">
+                                  <table>
+                                    <tr>
+                                      <th className="tab-title">
+                                        {' '}
+                                        Data da Transação
+                                      </th>
+                                      <th className="tab-title">
+                                        {' '}
+                                        Origem/ Favorecido
+                                      </th>
+                                      <th className="tab-title">
+                                        {' '}
+                                        Tipo de Operação
+                                      </th>
+                                      <th className="tab-title"> Valor</th>
+                                    </tr>
+                                    {infosOps.map((infosOp) => (
+                                      <tr key={infosOp.id}>
+                                        <td className="tab-title">
+                                          {infosOp.date}
+                                        </td>
+                                        <td className="tab-title">
+                                          {infosOp.operatorName}
+                                        </td>
+                                        <td className="tab-title">
+                                          {infosOp.operationId}
+                                        </td>
+                                        <td className="tab-title">
+                                          R$ {infosOp.value}
+                                        </td>
+                                      </tr>
+                                    ))}
+                                  </table>
+                                </div>
+                              </div>
+                            </>
+                          </TabPanel>
+                        ))}
+                      </>
+                    </div>
+                  </Tabs>
+                </TabPanel>
+              </Tabs>
+            </div>
           </div>
           <button id="cadastracartao">
             <Link to={`/cadastrarcartao/${accountId}`}>Cadastrar Cartão </Link>
           </button>
 
-            <div id="transacoestitulo">
-              <h3>Últimas Transações</h3>
-              <button id="mostrartransacoes">Mostrar todas</button>
-            </div>
+          <div id="transacoestitulo">
+            <h3>Últimas Transações</h3>
+            <button id="mostrartransacoes">Mostrar todas</button>
+          </div>
           <div id="ultimastransacoes">
             <table>
               <tr>
@@ -341,18 +554,30 @@ function Home() {
               </tr>
             </table>
           </div>
-          <span id="footerConta">
-            <h4>Nooma Design</h4>
-            <p>Agência 0001</p>
-            <p>Conta 443322-1</p>
-            <p>CNPJ <b>81.809.187/0001-70</b></p>
-          </span>
-          <span id="footer">
+          <>
+            {infosHome.map((infoHome) => (
+              <span id="footerConta">
+                <h4>{infoHome.enterpriseName}</h4>
+                <p>Agência 0001</p>
+                <p>Conta {infoHome.accountNumber}</p>
+                <p>
+                  CNPJ <b>{infoHome.enterpriseID}</b>
+                </p>
+              </span>
+            ))}
+          </>
+          <div id="footer">
+            <span>
               <h5>Frase do dia</h5>
-              <p id="frase">Eles vão invejá-lo pelo seu sucesso, sua riqueza, sua inteligência, sua aparência, seu estatuto - mas raramente pela sua sabedoria.</p>
+              <p id="frase">
+                Eles vão invejá-lo pelo seu sucesso, sua riqueza, sua
+                inteligência, sua aparência, seu estatuto - mas raramente pela
+                sua sabedoria.
+              </p>
               <p id="autorFrase">Nassim Nicholas Taleb</p>
               <p id="equipeB">Com carinho, Equipe B ♥</p>
-          </span>
+            </span>
+          </div>
         </Container>
       </>
     </div>

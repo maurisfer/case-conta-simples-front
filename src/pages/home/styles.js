@@ -389,7 +389,7 @@ div#wellcomediv{
       }
     }
 
-    #footerConta {
+  #footerConta {
   position: absolute;
   margin-top: -90px;
   background-color: #45B54A;
@@ -399,7 +399,7 @@ div#wellcomediv{
 
 }
 
-#footerConta h4 {
+#footerConta h5 {
   font-family: Open Sans;
   font-style: normal;
   font-weight: normal;
@@ -424,7 +424,15 @@ div#wellcomediv{
 }
 
 #footer {
-  display: none;
+  position: relative;
+  margin-top: -90px;
+  margin-left: 0;
+  background-color: #45B54A;
+  width: 100%;
+  height: auto;
+}
+#cardid {
+  display: block;
 }
 
 

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import MaskedInput from 'react-text-mask'
+import { Link } from 'react-router-dom';
 import { Container } from './styles';
 import ImgLogin from '../../assets/images/login-image.svg';
 import Img from '../../assets/images/logo 01 mobile.svg';
@@ -23,15 +24,12 @@ function Login() {
 
     const { enterpriseID, password } = infos;
 
-
     const infosToApi = {
       enterpriseID,
       password,
     };
 
-
     const response = await api.post('/login', infosToApi);
-
 
     if (response.status !== 200) {
 
@@ -117,7 +115,7 @@ function Login() {
               <input value="LOGIN" type="submit" />
             </form>
              <a href="/">Esqueci minha senha {'>'}</a> <br />
-            <a href="/">Ainda não sou cliente {'>'}</a>{' '}
+            <Link to="/criarconta">Ainda não sou cliente {'>'}</Link>
           </div>
         </Container>
       </>
