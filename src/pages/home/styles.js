@@ -430,9 +430,14 @@ div#wellcomediv{
   background-color: #45B54A;
   width: 100%;
   height: auto;
+  align-items:center;
 }
 #cardid {
   display: block;
+}
+#opicon {
+  width: 20px;
+  height:20px;
 }
 
 
@@ -605,6 +610,7 @@ div#ultimastransacoes{
   position: absolute;
   margin-top: -100px;
   margin-left: 220px;
+  margin-right: 0;
   background: #F4FCF5;
   width: 85%;
   height: 300px;

@@ -26,6 +26,8 @@ import IconesComprovantes from '../../assets/images/iconesul/iconecomprovantes.s
 import IconeTarifas from '../../assets/images/iconesul/iconetarifas.svg';
 import IconeFaleConosco from '../../assets/images/iconesul/iconefaleconosco.svg';
 import IconeBeneficios from '../../assets/images/iconesul/iconebenefícios.svg';
+import minusSign from '../../assets/images/menos-circulo-verde.svg';
+import plusSign from '../../assets/images/mais-circulo-verde.svg';
 
 import './cards.css';
 import './tab.css';
@@ -55,6 +57,48 @@ const Saldo = (props) => {
   );
 };
 
+const AllOps = (props) => {
+  const [infoAllOps, setInfoAllOps] = useState([]);
+  const [opId, setOpId] = useState([]);
+
+  const getAllOps = useCallback(async () => {
+    const response = await api.get('/transactions'); // Retorna um array
+    setInfoAllOps(response.data);
+  }, []);
+
+  const icon = opId ? minusSign:minusSign;
+  console.log(opId)
+
+  useEffect(() => {
+    getAllOps();
+  }, [getAllOps]);
+
+  return (
+    <table>
+      <tr>
+        <th>Data da transação</th>
+        <th>Origem/favorecido</th>
+        <th>Tipo de operação</th>
+        <th>Final do cartão</th>
+        <th>Valor</th>
+      </tr>
+      {infoAllOps.map((infoAllOp) => (
+        <>
+          <tr>
+            <td>{infoAllOp.date}</td>
+            <td>{infoAllOp.operatorName}</td>
+            <td onLoad={async () => setOpId(infoAllOp.operationId)}>
+              <img src={icon} id="opicon" alt="" />
+            </td>
+            <td>**** {infoAllOp.cardNumber}</td>
+            <td>R$ {infoAllOp.value}</td>
+          </tr>
+        </>
+      ))}
+    </table>
+  );
+};
+
 function Home() {
   const token = localStorage.getItem('@conta-simples/token');
   const accountId = localStorage.getItem('@conta-simples/accountid');
@@ -68,7 +112,6 @@ function Home() {
   const [infosHome, setInfosHome] = useState([]); // Informação de conta
   const [infosCard, setInfosCard] = useState([]); // Informações de cartão
   const [infosOps, setInfosOps] = useState([]);
-
   const [chartData, setChartData] = useState([]);
   const [chartDataCredit, setChartDataCredit] = useState([]);
   const [chartDataDebt, setChartDataDebt] = useState([]);
@@ -163,23 +206,6 @@ function Home() {
     }
     Logout(e);
   };
-
-  // const getCardId = async (e) => {
-  //   const cardId = e.target.listId;
-  //   return cardId;
-  // };
-
-  // const getIdOps = () => {
-  //   async function loadOps() {
-  //     const response = await api.get(`/transactions/${getCardId}`);
-  //     setInfosOps(response.data);
-  //   }
-  //   loadOps();
-  // };
-
-  // useEffect(() => {
-  //   getIdOps();
-  // }, [getIdOps]);
 
   // Chart
 
@@ -430,7 +456,6 @@ function Home() {
                                 `/transactions/${infoCard._id}`
                               );
                               setInfosOps(response.data);
-                              console.log(response);
                             }}
                           >
                             {/* <div id="cardid">{infoCard._id}</div> */}
@@ -523,49 +548,20 @@ function Home() {
             <button id="mostrartransacoes">Mostrar todas</button>
           </div>
           <div id="ultimastransacoes">
-            <table>
-              <tr>
-                <th>Data da transação</th>
-                <th>Origem/favorecido</th>
-                <th>Tipo de operação</th>
-                <th>Final do cartão</th>
-                <th>Valor</th>
-              </tr>
-              <tr>
-                <td>DATA</td>
-                <td>Origem</td>
-                <td>Compra?</td>
-                <td>******000</td>
-                <td>R$ 00,00</td>
-              </tr>
-              <tr>
-                <td>DATA</td>
-                <td>Origem</td>
-                <td>Compra?</td>
-                <td>******000</td>
-                <td>R$ 00,00</td>
-              </tr>
-              <tr>
-                <td>DATA</td>
-                <td>Origem</td>
-                <td>Compra?</td>
-                <td>******000</td>
-                <td>R$ 00,00</td>
-              </tr>
-            </table>
+            <AllOps />
           </div>
-          <>
+          <span id="footerConta">
             {infosHome.map((infoHome) => (
-              <span id="footerConta">
+              <>
                 <h4>{infoHome.enterpriseName}</h4>
                 <p>Agência 0001</p>
                 <p>Conta {infoHome.accountNumber}</p>
                 <p>
                   CNPJ <b>{infoHome.enterpriseID}</b>
                 </p>
-              </span>
+              </>
             ))}
-          </>
+          </span>
           <div id="footer">
             <span>
               <h5>Frase do dia</h5>

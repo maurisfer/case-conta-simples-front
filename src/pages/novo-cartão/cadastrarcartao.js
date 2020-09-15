@@ -37,11 +37,14 @@ function Criarcartao() {
       password,
     };
 
-    const response = await api.post('/card', infosToApi);
+    const response = await api.post(`/card`, infosToApi);
     console.log(response);
 
     if (response) {
       alert('Cartão criado com sucesso');
+    }
+    if (response.status === 400) {
+      alert('Senha Inválida');
     }
 
     window.location.href = `/home`;
