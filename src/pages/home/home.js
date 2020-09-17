@@ -26,7 +26,7 @@ import IconesComprovantes from '../../assets/images/iconesul/iconecomprovantes.s
 import IconeTarifas from '../../assets/images/iconesul/iconetarifas.svg';
 import IconeFaleConosco from '../../assets/images/iconesul/iconefaleconosco.svg';
 import IconeBeneficios from '../../assets/images/iconesul/iconebenefícios.svg';
-import minusSign from '../../assets/images/menos-circulo-verde.svg';
+import minusSign from '../../assets/images/menos-circulo-vermelho.svg';
 import plusSign from '../../assets/images/mais-circulo-verde.svg';
 
 import './cards.css';
@@ -59,15 +59,11 @@ const Saldo = (props) => {
 
 const AllOps = (props) => {
   const [infoAllOps, setInfoAllOps] = useState([]);
-  const [opId, setOpId] = useState([]);
 
   const getAllOps = useCallback(async () => {
     const response = await api.get('/transactions'); // Retorna um array
     setInfoAllOps(response.data);
   }, []);
-
-  const icon = opId ? minusSign:minusSign;
-  console.log(opId)
 
   useEffect(() => {
     getAllOps();
@@ -87,8 +83,12 @@ const AllOps = (props) => {
           <tr>
             <td>{infoAllOp.date}</td>
             <td>{infoAllOp.operatorName}</td>
-            <td onLoad={async () => setOpId(infoAllOp.operationId)}>
-              <img src={icon} id="opicon" alt="" />
+            <td>
+              {infoAllOp.operationId === 0 ? (
+                <img src={minusSign} id="opicon" alt="Icone de transação" />
+              ) : (
+                <img src={plusSign} id="opicon" alt="Icone de transação" />
+              )}
             </td>
             <td>**** {infoAllOp.cardNumber}</td>
             <td>R$ {infoAllOp.value}</td>
@@ -519,7 +519,19 @@ function Home() {
                                           {infosOp.operatorName}
                                         </td>
                                         <td className="tab-title">
-                                          {infosOp.operationId}
+                                          {infosOp.operationId === 0 ? (
+                                            <img
+                                              src={minusSign}
+                                              id="opicon"
+                                              alt="Identificação da operação"
+                                            />
+                                          ) : (
+                                            <img
+                                              src={plusSign}
+                                              id="opicon"
+                                              alt="Identificação da operação"
+                                            />
+                                          )}
                                         </td>
                                         <td className="tab-title">
                                           R$ {infosOp.value}
