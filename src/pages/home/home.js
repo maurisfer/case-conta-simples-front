@@ -111,10 +111,10 @@ function Home() {
 
   const [infosHome, setInfosHome] = useState([]); // Informação de conta
   const [infosCard, setInfosCard] = useState([]); // Informações de cartão
-  const [infosOps, setInfosOps] = useState([]);
-  const [chartData, setChartData] = useState([]);
-  const [chartDataCredit, setChartDataCredit] = useState([]);
-  const [chartDataDebt, setChartDataDebt] = useState([]);
+  const [infosOps, setInfosOps] = useState([]); // Informações das Transações
+  const [chartData, setChartData] = useState([]); // Observação de estado do componente Chart
+  const [chartDataCredit, setChartDataCredit] = useState([]); // Informações de Transações de Crédito
+  const [chartDataDebt, setChartDataDebt] = useState([]); // Informações de Transações de Débito
 
   // useEffects
 
@@ -122,7 +122,7 @@ function Home() {
     async function loadInfos() {
       try {
         const accountIdInfo = localStorage.getItem('@conta-simples/accountid');
-        const response = await api.get(`/oneaccount/${accountIdInfo}`);
+        const response = await api.get(`/account/${accountIdInfo}`);
         setInfosHome(response.data);
       } catch (e) {
         console.log(e);
@@ -221,6 +221,7 @@ function Home() {
         'Jul',
         'Ago',
         'Set',
+        'Out',
         'Nov',
         'Dez',
       ],
@@ -555,7 +556,7 @@ function Home() {
             <Link to={`/cadastrarcartao/${accountId}`}>Cadastrar Cartão </Link>
           </button>
 
-          <div id="transacoestitulo">
+          <div id="transacoestitulo" className="tab">
             <h3>Últimas Transações</h3>
             <button id="mostrartransacoes">Mostrar todas</button>
           </div>
@@ -575,7 +576,7 @@ function Home() {
             ))}
           </span>
           <div id="footer">
-            <span>
+            <div id="messages">
               <h5>Frase do dia</h5>
               <p id="frase">
                 Eles vão invejá-lo pelo seu sucesso, sua riqueza, sua
@@ -584,7 +585,7 @@ function Home() {
               </p>
               <p id="autorFrase">Nassim Nicholas Taleb</p>
               <p id="equipeB">Com carinho, Equipe B ♥</p>
-            </span>
+            </div>
           </div>
         </Container>
       </>

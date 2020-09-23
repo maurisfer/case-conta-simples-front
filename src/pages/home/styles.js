@@ -424,11 +424,11 @@ div#wellcomediv{
 }
 
 #footer {
-  position: relative;
+  position:relative;
   margin-top: -90px;
   margin-left: 0;
   background-color: #45B54A;
-  width: 100%;
+  width: auto;
   height: auto;
   align-items:center;
 }
@@ -612,9 +612,16 @@ div#ultimastransacoes{
   margin-left: 220px;
   margin-right: 0;
   background: #F4FCF5;
-  width: 85%;
+  width: 100%;
   height: 300px;
   display: block;
+  align-items: center;
+  #messages {
+    position: relative;
+    width: 50%;
+    height: auto;
+    margin-left: 263px;
+  }
 
 }
 
@@ -632,45 +639,45 @@ div#ultimastransacoes{
 }
 
 #autorFrase {
-padding-top: 3px;
+  padding-top: 3px;
 
-font-family: Niveau Grotesk;
-font-style: normal;
-font-weight: 300;
-font-size: 11px;
-line-height: 13px;
+  font-family: Niveau Grotesk;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 13px;
 
 
-padding-left: 425px;
+  padding-left: 425px;
 
-color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 
 }
 
 #frase {
   padding-top: 10px;
   font-family: Niveau Grotesk;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 16px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
 
-padding-left: 115px;
+  padding-left: 115px;
 
-color: #000000;
-}
+  color: #000000;
+  }
 
 #equipeB {
   padding-top: 45px;
   font-family: Niveau Grotesk;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 16px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 16px;
 
-padding-left: 405px;
+  padding-left: 405px;
 
-color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 
 }
 

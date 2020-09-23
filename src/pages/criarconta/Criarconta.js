@@ -94,7 +94,7 @@ function Criarconta() {
               <label htmlFor="cnpj" className="labellogin" name="enterpriseID">
                 {' '}
                 CNPJ: <br />
-                <MaskedInput mask={[/[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, '0', /\d/, '-', /\d/, /\d/]}
+                <MaskedInput mask={[/[0-9]/, /\d/, '.', /\d/, /\d/, /\d/, '.', /\d/, /\d/, /\d/, '/', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/]}
                 placeholder="Insira o CNPJ da empresa"
                 type="text"
                 id="cnpj"

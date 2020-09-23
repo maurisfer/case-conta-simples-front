@@ -6,7 +6,6 @@ import Img from '../../assets/images/logo 01 mobile.svg';
 import api from '../../services/api';
 
 function Criarcartao() {
-
   const token = localStorage.getItem('@conta-simples/token');
 
   if (!token) {
@@ -36,15 +35,10 @@ function Criarcartao() {
       cardName,
       password,
     };
-
     const response = await api.post(`/card`, infosToApi);
-    console.log(response);
 
     if (response) {
       alert('Cartão criado com sucesso');
-    }
-    if (response.status === 400) {
-      alert('Senha Inválida');
     }
 
     window.location.href = `/home`;
